@@ -24,7 +24,7 @@ export const siteConfig = {
     "https://www.city.kimitsu.lg.jp/site/gikai/list46-56.html",
   twitterHashtag: "みらい議会君津市版", // # なし
   externalLinks: {
-    report: "https://forms.gle/PbZdpdRzTrsAuDST7",
+    report: "https://www.instagram.com/michitakaotake",
     aboutNote: "",
     donation: "https://team-mir.ai/support/donation",
     teamAbout: "https://team-mir.ai/about",
@@ -42,10 +42,10 @@ export const siteConfig = {
    * 利用規約や問い合わせ先に使用します。
    */
   operator: {
-    name: "バクモン" as string,
-    contactUrl: "https://x.com/bakumon0907" as string,
+    name: "大竹みちたか" as string,
+    contactUrl: "https://www.instagram.com/michitakaotake" as string,
     /** 利用規約の準拠法・管轄裁判所（第一審の専属的合意管轄） */
-    jurisdiction: "福岡地方裁判所" as string,
+    jurisdiction: "千葉地方裁判所" as string,
   },
   /**
    * AI機能の有効/無効設定
