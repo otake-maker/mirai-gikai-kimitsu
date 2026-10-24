@@ -4,24 +4,25 @@
  * @see docs/kawasaki/20260304_1000_別地域向けfork手順.md
  */
 export const siteConfig = {
-  siteName: "みらい議会＠福岡市",
+  siteName: "みらい議会＠君津市",
   siteDescription:
-    "福岡市議会で今どんな議案が検討されているか、わかりやすく伝えるプラットフォームです",
-  cityName: "福岡市",
-  councilName: "福岡市議会",
+    "君津市議会で今どんな議案が検討されているか、わかりやすく伝えるプラットフォームです",
+  cityName: "君津市",
+  councilName: "君津市議会",
   keywords: [
-    "みらい議会ー福岡市版",
+    "みらい議会ー君津市版",
     "議案",
-    "福岡市",
+    "君津市",
     "市議会",
     "地方政治",
     "政策",
     "解説",
   ],
-  councilBaseUrl: "https://gikai.city.fukuoka.lg.jp/",
+  councilBaseUrl: "https://www.city.kimitsu.lg.jp/site/gikai/",
   /** 議案・議決結果の一覧ページ */
-  councilBillsDetailUrl: "https://gikai.city.fukuoka.lg.jp/result/result/",
-  twitterHashtag: "みらい議会福岡市版", // # なし
+  councilBillsDetailUrl:
+    "https://www.city.kimitsu.lg.jp/site/gikai/list46-56.html",
+  twitterHashtag: "みらい議会君津市版", // # なし
   externalLinks: {
     report: "https://forms.gle/PbZdpdRzTrsAuDST7",
     aboutNote: "",
