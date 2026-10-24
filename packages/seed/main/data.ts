@@ -153,7 +153,7 @@ export const tags: TagInsert[] = [
 
 export const bills: BillInsert[] = [
   {
-    name: "福岡市子ども医療費助成条例の一部改正",
+    name: "君津市子ども医療費助成条例の一部改正",
     status: "in_committee",
     status_note: "文教委員会で審査中",
     published_at: "2025-11-25T09:00:00+09:00",
@@ -161,7 +161,7 @@ export const bills: BillInsert[] = [
     is_featured: true,
   },
   {
-    name: "福岡市地域包括ケアシステム推進条例",
+    name: "君津市地域包括ケアシステム推進条例",
     status: "approved",
     status_note: "本会議で可決",
     published_at: "2025-09-15T10:00:00+09:00",
@@ -169,7 +169,7 @@ export const bills: BillInsert[] = [
     is_featured: true,
   },
   {
-    name: "福岡市公園条例の一部改正",
+    name: "君津市公園条例の一部改正",
     status: "rejected",
     status_note: "本会議で否決",
     published_at: "2025-10-01T09:00:00+09:00",
@@ -177,7 +177,7 @@ export const bills: BillInsert[] = [
     is_featured: false,
   },
   {
-    name: "福岡市学校給食費の無償化に関する条例",
+    name: "君津市学校給食費の無償化に関する条例",
     status: "approved",
     status_note: "本会議で可決、来年度から実施",
     published_at: "2025-09-10T09:00:00+09:00",
@@ -185,7 +185,7 @@ export const bills: BillInsert[] = [
     is_featured: false,
   },
   {
-    name: "福岡市防災対策基本条例の一部改正",
+    name: "君津市防災対策基本条例の一部改正",
     status: "rejected",
     status_note: "本会議で否決",
     published_at: "2025-09-20T10:00:00+09:00",
@@ -200,11 +200,11 @@ export function createBillsTags(
   insertedTags: { id: string; label: string }[]
 ): Omit<BillsTagsInsert, "id" | "created_at">[] {
   const billTagMap: { [billName: string]: string[] } = {
-    "福岡市子ども医療費助成条例の一部改正": ["子育て・教育"],
-    "福岡市地域包括ケアシステム推進条例": ["福祉・医療"],
-    "福岡市公園条例の一部改正": ["まちづくり・環境"],
-    "福岡市学校給食費の無償化に関する条例": ["子育て・教育"],
-    "福岡市防災対策基本条例の一部改正": ["まちづくり・環境"],
+    "君津市子ども医療費助成条例の一部改正": ["子育て・教育"],
+    "君津市地域包括ケアシステム推進条例": ["福祉・医療"],
+    "君津市公園条例の一部改正": ["まちづくり・環境"],
+    "君津市学校給食費の無償化に関する条例": ["子育て・教育"],
+    "君津市防災対策基本条例の一部改正": ["まちづくり・環境"],
   };
 
   const billsTags: Omit<BillsTagsInsert, "id" | "created_at">[] = [];

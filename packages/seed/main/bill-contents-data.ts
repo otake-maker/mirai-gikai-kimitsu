@@ -10,9 +10,9 @@ interface BillContentWithBillName {
 
 // 議案コンテンツのデータ（bill_nameで参照）
 export const billContentsWithBillName: BillContentWithBillName[] = [
-  // ===== 川崎市子ども医療費助成条例の一部改正 =====
+  // ===== 君津市子ども医療費助成条例の一部改正 =====
   {
-    bill_name: "川崎市子ども医療費助成条例の一部改正",
+    bill_name: "君津市子ども医療費助成条例の一部改正",
     difficulty_level: "normal",
     title: "子どもの医療費助成を拡充する条例改正",
     summary:
@@ -82,7 +82,7 @@ export const billContentsWithBillName: BillContentWithBillName[] = [
 この条例改正により、川崎市で育つすべての子どもが18歳まで安心して医療を受けられるようになります。子育て世帯の経済的な安心につながる重要な施策です。`,
   },
   {
-    bill_name: "川崎市子ども医療費助成条例の一部改正",
+    bill_name: "君津市子ども医療費助成条例の一部改正",
     difficulty_level: "hard",
     title: "川崎市子ども医療費助成条例の一部を改正する条例案",
     summary:
@@ -165,9 +165,9 @@ export const billContentsWithBillName: BillContentWithBillName[] = [
 本条例改正は、子育て世帯への経済的支援の充実と近隣自治体との制度均衡の観点から必要性が認められる。財政負担の増加に対しては、医療費適正化策との一体的な推進により持続可能な制度運営を図ることが求められる。`,
   },
 
-  // ===== 川崎市地域包括ケアシステム推進条例 =====
+  // ===== 君津市地域包括ケアシステム推進条例 =====
   {
-    bill_name: "川崎市地域包括ケアシステム推進条例",
+    bill_name: "君津市地域包括ケアシステム推進条例",
     difficulty_level: "normal",
     title: "地域で支え合う仕組みをつくる条例",
     summary:
@@ -236,7 +236,7 @@ export const billContentsWithBillName: BillContentWithBillName[] = [
 この条例は、川崎市に住むすべての人が、年齢や障害の有無にかかわらず、安心して暮らし続けられるまちをつくるための基盤となるものです。行政だけでなく、市民・企業・医療機関が一体となって取り組むことが重要です。`,
   },
   {
-    bill_name: "川崎市地域包括ケアシステム推進条例",
+    bill_name: "君津市地域包括ケアシステム推進条例",
     difficulty_level: "hard",
     title: "川崎市地域包括ケアシステムの推進に関する条例案",
     summary:
@@ -309,9 +309,9 @@ export const billContentsWithBillName: BillContentWithBillName[] = [
 本条例は、超高齢社会における川崎市の持続可能な福祉基盤を構築するための制度的枠組みである。条例制定により、部局横断的な推進体制と各区の地域特性に応じた施策展開を制度として担保し、中長期的な地域包括ケアシステムの深化を図る。`,
   },
 
-  // ===== 川崎市公園条例の一部改正 =====
+  // ===== 君津市公園条例の一部改正 =====
   {
-    bill_name: "川崎市公園条例の一部改正",
+    bill_name: "君津市公園条例の一部改正",
     difficulty_level: "normal",
     title: "公園をもっと使いやすくする条例改正",
     summary:
@@ -394,7 +394,7 @@ export const billContentsWithBillName: BillContentWithBillName[] = [
 この条例改正で、川崎市の公園が「ただの空き地」から「地域の交流拠点」「防災拠点」として生まれ変わります。子どもからお年寄りまで、誰もが楽しめる公園づくりを目指します。`,
   },
   {
-    bill_name: "川崎市公園条例の一部改正",
+    bill_name: "君津市公園条例の一部改正",
     difficulty_level: "hard",
     title: "川崎市都市公園条例の一部を改正する条例案",
     summary:
@@ -488,9 +488,9 @@ export const billContentsWithBillName: BillContentWithBillName[] = [
 本条例改正は、都市公園の多機能化と持続可能な管理運営を制度的に担保するものであり、Park-PFI導入による民間活力の活用と防災機能の強化を車の両輪として推進する。`,
   },
 
-  // ===== 川崎市学校給食費の無償化に関する条例 =====
+  // ===== 君津市学校給食費の無償化に関する条例 =====
   {
-    bill_name: "川崎市学校給食費の無償化に関する条例",
+    bill_name: "君津市学校給食費の無償化に関する条例",
     difficulty_level: "normal",
     title: "学校給食を無料にする条例",
     summary:
@@ -560,12 +560,12 @@ export const billContentsWithBillName: BillContentWithBillName[] = [
 学校給食の無償化は、子育て世帯への直接的な経済支援であると同時に、すべての子どもの健やかな成長を社会全体で支える仕組みです。川崎市に住む子どもたちが、お金の心配なく毎日おいしい給食を食べられるようになります。`,
   },
   {
-    bill_name: "川崎市学校給食費の無償化に関する条例",
+    bill_name: "君津市学校給食費の無償化に関する条例",
     difficulty_level: "hard",
-    title: "川崎市学校給食費の無償化に関する条例案",
+    title: "君津市学校給食費の無償化に関する条例案",
     summary:
       "学校給食法第11条第2項の保護者負担を市が代替負担する条例を新設。市立小中学校約166校、児童生徒約10万4千人を対象に年間約55億円の財政措置で完全無償化を実現する。",
-    content: `# 川崎市学校給食費の無償化に関する条例案
+    content: `# 君津市学校給食費の無償化に関する条例案
 
 ## 条例の構成
 
@@ -653,9 +653,9 @@ export const billContentsWithBillName: BillContentWithBillName[] = [
 本条例は、義務教育の無償化を実質的に前進させるとともに、子育て世帯の経済的負担を直接軽減する効果が高い。年間約55億円の財政負担は、中長期的な子育て支援策・定住促進策としての投資効果を踏まえ、総合的に判断されるべきである。`,
   },
 
-  // ===== 川崎市防災対策基本条例の一部改正 =====
+  // ===== 君津市防災対策基本条例の一部改正 =====
   {
-    bill_name: "川崎市防災対策基本条例の一部改正",
+    bill_name: "君津市防災対策基本条例の一部改正",
     difficulty_level: "normal",
     title: "防災対策を強化する条例改正（否決）",
     summary:
@@ -739,7 +739,7 @@ export const billContentsWithBillName: BillContentWithBillName[] = [
 条例改正は否決されましたが、川崎市の防災力強化の必要性は変わりません。マンション住民の負担に配慮しながら、実効性のある防災対策を進めることが求められています。`,
   },
   {
-    bill_name: "川崎市防災対策基本条例の一部改正",
+    bill_name: "君津市防災対策基本条例の一部改正",
     difficulty_level: "hard",
     title: "川崎市防災対策基本条例の一部を改正する条例案（否決）",
     summary:
