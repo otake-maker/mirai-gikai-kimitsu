@@ -40,7 +40,12 @@ type BillEntry = {
   decidedDate: string;
   result: string;
   votes: MemberVotes;
-  /** 省略時は bill。発議案（意見書）は opinion */
+  /**
+   * この議案だけ採決に加わらない議員を上書きする（省略時はファイル全体の nonVoting）。
+   * 議長を含めた特別多数議決の議案では [] を指定する。
+   */
+  nonVoting?: string[];
+  /** 省略時は bill。発議案（意見書）は opinion、議員提出の意見書以外は member_bill */
   billType?: BillType;
   /** tags.json の label のいずれか */
   tags: string[];
@@ -311,7 +316,11 @@ async function main() {
   const prepared = data.bills.map((bill) => ({
     bill,
     status: resultToStatus(bill.result),
-    stances: aggregateFactionStances(data.factions, bill.votes, data.nonVoting),
+    stances: aggregateFactionStances(
+      data.factions,
+      bill.votes,
+      bill.nonVoting ?? data.nonVoting
+    ),
   }));
 
   console.log(

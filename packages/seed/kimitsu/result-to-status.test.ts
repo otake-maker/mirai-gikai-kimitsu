@@ -30,6 +30,13 @@ describe("resultToStatus", () => {
     expect(resultToStatus("採択").statusNote).toBe("採択");
   });
 
+  it("趣旨採択は approved と補足を返す", () => {
+    expect(resultToStatus("趣旨採択")).toEqual({
+      status: "approved",
+      statusNote: "趣旨採択",
+    });
+  });
+
   it("継続審査は in_committee", () => {
     expect(resultToStatus("継続審査")).toEqual({
       status: "in_committee",

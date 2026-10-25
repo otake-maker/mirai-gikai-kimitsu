@@ -28,6 +28,9 @@ export function resultToStatus(result: string): StatusMapping {
   if (normalized === "採択") {
     return { status: "approved", statusNote: "採択" };
   }
+  if (normalized === "趣旨採択") {
+    return { status: "approved", statusNote: "趣旨採択" };
+  }
   if (normalized.includes("可決")) {
     return { status: "approved", statusNote: null };
   }
