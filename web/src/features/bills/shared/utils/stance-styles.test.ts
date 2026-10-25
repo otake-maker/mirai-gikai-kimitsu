@@ -96,6 +96,15 @@ describe("getStanceStyles", () => {
     });
   });
 
+  it("split スタンスでデフォルトスタイルを返す", () => {
+    const result = getStanceStyles(makeStance("split"), false);
+    expect(result).toEqual({
+      bg: "bg-mirai-surface-muted",
+      textColor: "text-black",
+      label: "賛否が分かれた",
+    });
+  });
+
   it("stance=undefined, isPreparing=false のとき中立ラベルを返す", () => {
     const result = getStanceStyles(undefined, false);
     expect(result).toEqual({

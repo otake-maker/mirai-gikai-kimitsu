@@ -52,6 +52,7 @@ const STANCE_LABELS: Record<string, string> = {
   conditional_against: "条件付き反対",
   considering: "検討中",
   continued_deliberation: "継続審査",
+  split: "賛否が分かれた",
 };
 
 const STANCE_VARIANTS: Record<
@@ -66,6 +67,7 @@ const STANCE_VARIANTS: Record<
   conditional_against: "destructive",
   considering: "secondary",
   continued_deliberation: "outline",
+  split: "outline",
 };
 
 type OverrideState = {
