@@ -72,7 +72,13 @@ type BillsFile = {
     councilUrl: string;
   };
   nonVoting: string[];
-  factions: (FactionMembers & { displayName: string })[];
+  factions: (FactionMembers & {
+    displayName: string;
+    /** 表示順。会期をまたいで同じ会派の順番がそろうよう指定する（省略時はファイル内の順番） */
+    sortOrder?: number;
+    /** 現在も存在する会派か（解散した会派は false。省略時 true） */
+    isActive?: boolean;
+  })[];
   bills: BillEntry[];
 };
 
@@ -134,8 +140,8 @@ async function upsertFactions(
     const values = {
       name: faction.name,
       display_name: faction.displayName,
-      sort_order: index + 1,
-      is_active: true,
+      sort_order: faction.sortOrder ?? index + 1,
+      is_active: faction.isActive ?? true,
     };
     const { data: existing, error: selectError } = await supabase
       .from("factions")

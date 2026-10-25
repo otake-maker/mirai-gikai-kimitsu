@@ -1,0 +1,501 @@
+{
+  "councilSession": {
+    "slug": "r7-3",
+    "name": "令和7年 第3回定例会（9月）",
+    "startDate": "2025-09-02",
+    "endDate": "2025-09-30",
+    "councilUrl": "https://www.city.kimitsu.lg.jp/site/gikai/81266.html"
+  },
+  "sources": {
+    "bills": "https://www.city.kimitsu.lg.jp/site/gikai/81266.html",
+    "results": "https://www.city.kimitsu.lg.jp/uploaded/attachment/56699.pdf",
+    "factions": "審議結果PDFの見出し（会派名と議員名の位置）から判定"
+  },
+  "nonVoting": [
+    "小倉 靖幸"
+  ],
+  "factions": [
+    {
+      "name": "soseikai",
+      "displayName": "創政会",
+      "members": [
+        "大滝 浩介",
+        "四宮 安彦",
+        "鈴木 高大",
+        "下田 剣吾",
+        "保坂 好一",
+        "高橋 明",
+        "小林 喜久男"
+      ],
+      "sortOrder": 9,
+      "isActive": false
+    },
+    {
+      "name": "reiwa-shinsei",
+      "displayName": "令和新政",
+      "members": [
+        "小倉 靖幸",
+        "小倉 広紀",
+        "大和 ヒロシ",
+        "天笠 等",
+        "鶴岡 一成",
+        "三浦 章"
+      ],
+      "sortOrder": 1
+    },
+    {
+      "name": "kimitsu-mirai",
+      "displayName": "きみつ未来",
+      "members": [
+        "滿武 琢也",
+        "石上 塁",
+        "松本 裕次郎"
+      ],
+      "sortOrder": 4
+    },
+    {
+      "name": "komei",
+      "displayName": "公明党",
+      "members": [
+        "高橋 健治",
+        "佐藤 葉子",
+        "野上 慎治"
+      ],
+      "sortOrder": 5
+    },
+    {
+      "name": "kyosan",
+      "displayName": "日本共産党（三浦 道雄）",
+      "members": [
+        "三浦 道雄"
+      ],
+      "sortOrder": 8
+    },
+    {
+      "name": "kibou-ni-mirai",
+      "displayName": "希望にみらい（林 祥子）",
+      "members": [
+        "林 祥子"
+      ],
+      "sortOrder": 6
+    }
+  ],
+  "bills": [
+    {
+      "billNumber": "第4号",
+      "name": "君津市議会議員及び君津市長の選挙における選挙運動の公費負担に関する条例の一部を改正する条例の制定について",
+      "officialSummary": "公職選挙法施行令の一部改正を踏まえ、選挙運動の公費負担の限度額を引き上げるため、君津市議会議員及び君津市長の選挙における選挙運動の公費負担に関する条例の一部を改正しようとするもの。",
+      "submittedDate": "2025-09-02",
+      "decidedDate": "2025-09-30",
+      "result": "原案可決",
+      "votes": {
+        "default": "for",
+        "exceptions": []
+      },
+      "tags": [],
+      "isFeatured": false
+    },
+    {
+      "billNumber": "第5号",
+      "name": "君津市行政手続における特定の個人を識別するための番号の利用等に関する法律に基づく個人番号の利用に関する条例の一部を改正する条例の制定について",
+      "officialSummary": "市の住民基本台帳に記録されていない者の情報の管理に関する事務について、個人番号を利用するため、君津市行政手続における特定の個人を識別するための番号の利用等に関する法律に基づく個人番号の利用に関する条例の一部を改正しようとするもの。",
+      "submittedDate": "2025-09-02",
+      "decidedDate": "2025-09-30",
+      "result": "原案可決",
+      "votes": {
+        "default": "for",
+        "exceptions": []
+      },
+      "tags": [],
+      "isFeatured": false
+    },
+    {
+      "billNumber": "第6号",
+      "name": "一般職の職員の特殊勤務手当支給条例の一部を改正する条例の制定について",
+      "officialSummary": "緊急消防援助隊として出動する職員に対して、特殊勤務手当を支給するため、一般職の職員の特殊勤務手当支給条例の一部を改正しようとするもの。",
+      "submittedDate": "2025-09-02",
+      "decidedDate": "2025-09-30",
+      "result": "原案可決",
+      "votes": {
+        "default": "for",
+        "exceptions": []
+      },
+      "tags": [
+        "防災・安全"
+      ],
+      "isFeatured": false
+    },
+    {
+      "billNumber": "第7号",
+      "name": "君津市手数料徴収条例の一部を改正する条例の制定について",
+      "officialSummary": "地方公共団体情報システムの標準化に関する法律の施行等に伴い、本市の基幹業務システムを同法に基づく標準準拠システムに移行するに当たり、固定資産税に係る証明書の種類を変更するため、君津市手数料徴収条例の一部を改正しようとするもの。",
+      "submittedDate": "2025-09-02",
+      "decidedDate": "2025-09-30",
+      "result": "原案可決",
+      "votes": {
+        "default": "for",
+        "exceptions": []
+      },
+      "tags": [
+        "財政・予算"
+      ],
+      "isFeatured": false
+    },
+    {
+      "billNumber": "第8号",
+      "name": "君津市市民スポーツ広場の設置及び管理に関する条例の一部を改正する条例の制定について",
+      "officialSummary": "君津市市民スポーツ広場の新たな使用料を設けるとともに、使用料の額の改定をするため、君津市市民スポーツ広場の設置及び管理に関する条例の一部を改正しようとするもの。",
+      "submittedDate": "2025-09-02",
+      "decidedDate": "2025-09-30",
+      "result": "原案可決",
+      "votes": {
+        "default": "for",
+        "exceptions": [
+          "三浦 道雄",
+          "林 祥子"
+        ]
+      },
+      "tags": [
+        "まちづくり・環境"
+      ],
+      "isFeatured": false
+    },
+    {
+      "billNumber": "第9号",
+      "name": "君津市民文化ホールの設置及び管理に関する条例の一部を改正する条例の制定について",
+      "officialSummary": "君津市民文化ホールの利用料金の上限の額を改定するため、君津市民文化ホールの設置及び管理に関する条例の一部を改正しようとするもの。",
+      "submittedDate": "2025-09-02",
+      "decidedDate": "2025-09-30",
+      "result": "原案可決",
+      "votes": {
+        "default": "for",
+        "exceptions": [
+          "大和 ヒロシ",
+          "林 祥子"
+        ]
+      },
+      "tags": [
+        "まちづくり・環境"
+      ],
+      "isFeatured": false
+    },
+    {
+      "billNumber": "第10号",
+      "name": "君津市企業立地促進条例の一部を改正する条例の制定について",
+      "officialSummary": "奨励金の内容を改めるため、君津市企業立地促進条例の一部を改正しようとするもの。",
+      "submittedDate": "2025-09-02",
+      "decidedDate": "2025-09-30",
+      "result": "原案可決",
+      "votes": {
+        "default": "for",
+        "exceptions": []
+      },
+      "tags": [
+        "産業・経済"
+      ],
+      "isFeatured": false
+    },
+    {
+      "billNumber": "第11号",
+      "name": "君津市が管理する市道の構造の技術的基準等を定める条例の一部を改正する条例の制定について",
+      "officialSummary": "道路構造令の一部改正に伴い、自転車通行帯の設置に関する基準等を定めるため、君津市が管理する市道の構造の技術的基準等を定める条例の一部を改正しようとするもの。",
+      "submittedDate": "2025-09-02",
+      "decidedDate": "2025-09-30",
+      "result": "原案可決",
+      "votes": {
+        "default": "for",
+        "exceptions": []
+      },
+      "tags": [
+        "まちづくり・環境"
+      ],
+      "isFeatured": false
+    },
+    {
+      "billNumber": "第12号",
+      "name": "君津市の特定の事務を取り扱わせる郵便局の指定の取消しについて",
+      "officialSummary": "地方公共団体の特定の事務の郵便局における取扱いに関する法律第3条第5項の規定により、下記のとおり特定の事務を取り扱わせる郵便局の指定を取り消すことについて、同項において準用する同条第3項の規定により議会の議決を求めようとするもの。",
+      "submittedDate": "2025-09-02",
+      "decidedDate": "2025-09-30",
+      "result": "原案可決",
+      "votes": {
+        "default": "for",
+        "exceptions": []
+      },
+      "tags": [],
+      "isFeatured": false
+    },
+    {
+      "billNumber": "第13号",
+      "name": "財産の無償譲渡について",
+      "officialSummary": "財産を無償で譲渡するに当たり、地方自治法第96条第1項第6号の規定により、議会の議決を求めようとするもの。",
+      "submittedDate": "2025-09-02",
+      "decidedDate": "2025-09-30",
+      "result": "原案可決",
+      "votes": {
+        "default": "for",
+        "exceptions": [
+          "大滝 浩介",
+          "四宮 安彦",
+          "鈴木 高大",
+          "保坂 好一",
+          "三浦 道雄",
+          "林 祥子"
+        ]
+      },
+      "tags": [],
+      "isFeatured": false
+    },
+    {
+      "billNumber": "第14号",
+      "name": "旧清和公民館解体工事請負契約の締結について",
+      "officialSummary": "旧清和公民館解体工事請負契約を締結するに当たり、地方自治法第96条第1項第5号及び議会の議決に付すべき契約及び財産の取得又は処分に関する条例第2条の規定により、議会の議決を求めようとするもの。",
+      "submittedDate": "2025-09-02",
+      "decidedDate": "2025-09-30",
+      "result": "原案可決",
+      "votes": {
+        "default": "for",
+        "exceptions": []
+      },
+      "tags": [
+        "まちづくり・環境"
+      ],
+      "isFeatured": false
+    },
+    {
+      "billNumber": "第15号",
+      "name": "損害賠償の額の決定及び和解について",
+      "officialSummary": "損害賠償の額を決定し、和解したいので、地方自治法第96条第1項第12号及び第13号の規定により、議会の議決を求めようとするもの。",
+      "submittedDate": "2025-09-02",
+      "decidedDate": "2025-09-30",
+      "result": "原案可決",
+      "votes": {
+        "default": "for",
+        "exceptions": []
+      },
+      "tags": [],
+      "isFeatured": false
+    },
+    {
+      "billNumber": "第16号",
+      "name": "令和7年度君津市一般会計補正予算（第4号）",
+      "officialSummary": "補正予算を調製したので、地方自治法第96条第1項第2号の規定により議会の議決を求めようとするもの。",
+      "submittedDate": "2025-09-02",
+      "decidedDate": "2025-09-30",
+      "result": "原案可決",
+      "votes": {
+        "default": "for",
+        "exceptions": []
+      },
+      "tags": [
+        "財政・予算"
+      ],
+      "isFeatured": false
+    },
+    {
+      "billNumber": "第17号",
+      "name": "令和7年度君津市国民健康保険特別会計補正予算（第1号）",
+      "officialSummary": "補正予算を調製したので、地方自治法第96条第1項第2号の規定により議会の議決を求めようとするもの。",
+      "submittedDate": "2025-09-02",
+      "decidedDate": "2025-09-30",
+      "result": "原案可決",
+      "votes": {
+        "default": "for",
+        "exceptions": []
+      },
+      "tags": [
+        "福祉・医療",
+        "財政・予算"
+      ],
+      "isFeatured": false
+    },
+    {
+      "billNumber": "第18号",
+      "name": "令和7年度君津市介護保険特別会計補正予算（第1号）",
+      "officialSummary": "補正予算を調製したので、地方自治法第96条第1項第2号の規定により議会の議決を求めようとするもの。",
+      "submittedDate": "2025-09-02",
+      "decidedDate": "2025-09-30",
+      "result": "原案可決",
+      "votes": {
+        "default": "for",
+        "exceptions": []
+      },
+      "tags": [
+        "福祉・医療",
+        "財政・予算"
+      ],
+      "isFeatured": false
+    },
+    {
+      "billNumber": "第19号",
+      "name": "令和7年度君津市後期高齢者医療特別会計補正予算（第1号）",
+      "officialSummary": "補正予算を調製したので、地方自治法第96条第1項第2号の規定により議会の議決を求めようとするもの。",
+      "submittedDate": "2025-09-02",
+      "decidedDate": "2025-09-30",
+      "result": "原案可決",
+      "votes": {
+        "default": "for",
+        "exceptions": []
+      },
+      "tags": [
+        "福祉・医療",
+        "財政・予算"
+      ],
+      "isFeatured": false
+    },
+    {
+      "billNumber": "認定第1号",
+      "name": "令和6年度君津市一般会計歳入歳出決算の認定について",
+      "officialSummary": "地方自治法第233条第3項（農業集落排水事業は地方公営企業法第30条第4項）の規定により、令和6年度の決算を監査委員の意見を付けて議会の認定に付するもの。",
+      "submittedDate": "2025-09-02",
+      "decidedDate": "2025-09-30",
+      "result": "認定",
+      "votes": {
+        "default": "for",
+        "exceptions": [
+          "三浦 道雄"
+        ]
+      },
+      "tags": [
+        "財政・予算"
+      ],
+      "isFeatured": false
+    },
+    {
+      "billNumber": "認定第2号",
+      "name": "令和6年度君津市国民健康保険特別会計歳入歳出決算の認定について",
+      "officialSummary": "地方自治法第233条第3項（農業集落排水事業は地方公営企業法第30条第4項）の規定により、令和6年度の決算を監査委員の意見を付けて議会の認定に付するもの。",
+      "submittedDate": "2025-09-02",
+      "decidedDate": "2025-09-30",
+      "result": "認定",
+      "votes": {
+        "default": "for",
+        "exceptions": [
+          "三浦 道雄"
+        ]
+      },
+      "tags": [
+        "福祉・医療",
+        "財政・予算"
+      ],
+      "isFeatured": false
+    },
+    {
+      "billNumber": "認定第3号",
+      "name": "令和6年度君津市介護保険特別会計歳入歳出決算の認定について",
+      "officialSummary": "地方自治法第233条第3項（農業集落排水事業は地方公営企業法第30条第4項）の規定により、令和6年度の決算を監査委員の意見を付けて議会の認定に付するもの。",
+      "submittedDate": "2025-09-02",
+      "decidedDate": "2025-09-30",
+      "result": "認定",
+      "votes": {
+        "default": "for",
+        "exceptions": [
+          "三浦 道雄"
+        ]
+      },
+      "tags": [
+        "福祉・医療",
+        "財政・予算"
+      ],
+      "isFeatured": false
+    },
+    {
+      "billNumber": "認定第4号",
+      "name": "令和6年度君津市後期高齢者医療特別会計歳入歳出決算の認定について",
+      "officialSummary": "地方自治法第233条第3項（農業集落排水事業は地方公営企業法第30条第4項）の規定により、令和6年度の決算を監査委員の意見を付けて議会の認定に付するもの。",
+      "submittedDate": "2025-09-02",
+      "decidedDate": "2025-09-30",
+      "result": "認定",
+      "votes": {
+        "default": "for",
+        "exceptions": [
+          "三浦 道雄"
+        ]
+      },
+      "tags": [
+        "福祉・医療",
+        "財政・予算"
+      ],
+      "isFeatured": false
+    },
+    {
+      "billNumber": "認定第5号",
+      "name": "令和6年度君津市農業集落排水事業会計決算の認定について",
+      "officialSummary": "地方自治法第233条第3項（農業集落排水事業は地方公営企業法第30条第4項）の規定により、令和6年度の決算を監査委員の意見を付けて議会の認定に付するもの。",
+      "submittedDate": "2025-09-02",
+      "decidedDate": "2025-09-30",
+      "result": "認定",
+      "votes": {
+        "default": "for",
+        "exceptions": []
+      },
+      "tags": [
+        "まちづくり・環境",
+        "財政・予算"
+      ],
+      "isFeatured": false
+    },
+    {
+      "billNumber": "陳情第7号",
+      "name": "林地開発に関する陳情書",
+      "officialSummary": "林地開発に関する陳情書。",
+      "submittedDate": "2025-09-02",
+      "decidedDate": "2025-09-30",
+      "result": "趣旨採択",
+      "votes": {
+        "default": "for",
+        "exceptions": []
+      },
+      "tags": [
+        "まちづくり・環境"
+      ],
+      "isFeatured": false
+    },
+    {
+      "billNumber": "陳情第8号",
+      "name": "再生資源物の屋外保管に関する条例の制定を求める陳情",
+      "officialSummary": "再生資源物の屋外保管に関する条例の制定を求める陳情。",
+      "submittedDate": "2025-09-02",
+      "decidedDate": "2025-09-30",
+      "result": "趣旨採択",
+      "votes": {
+        "default": "for",
+        "exceptions": []
+      },
+      "tags": [
+        "まちづくり・環境"
+      ],
+      "isFeatured": false
+    },
+    {
+      "billNumber": "陳情第9号",
+      "name": "わが家（生家の建造物）の君津市への寄贈と市有地への移設と管理・活用をお願いする陳情",
+      "officialSummary": "わが家（生家の建造物）の君津市への寄贈と市有地への移設と管理・活用をお願いする陳情。",
+      "submittedDate": "2025-09-02",
+      "decidedDate": "2025-09-30",
+      "result": "不採択",
+      "votes": {
+        "default": "against",
+        "exceptions": []
+      },
+      "tags": [],
+      "isFeatured": false
+    },
+    {
+      "billNumber": "第20号",
+      "name": "令和7年度君津市一般会計補正予算（第5号）",
+      "officialSummary": "補正予算を調製したので、地方自治法第96条第1項第2号の規定により議会の議決を求めようとするもの。",
+      "submittedDate": "2025-09-30",
+      "decidedDate": "2025-09-30",
+      "result": "原案可決",
+      "votes": {
+        "default": "for",
+        "exceptions": []
+      },
+      "tags": [
+        "財政・予算"
+      ],
+      "isFeatured": false
+    }
+  ]
+}
