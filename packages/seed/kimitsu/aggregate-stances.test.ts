@@ -81,6 +81,42 @@ describe("aggregateFactionStances", () => {
     expect(result).toEqual([]);
   });
 
+  it("その議案の採決に加わらなかった議員は除外し、comment に残す", () => {
+    const result = aggregateFactionStances(
+      FACTIONS,
+      { default: "for", exceptions: ["B1"], absent: ["B2"] },
+      ["議長"]
+    );
+    expect(result[1]).toEqual({
+      factionName: "b",
+      type: "split",
+      comment: "賛成：B3／反対：B1／採決に加わらず：B2",
+    });
+  });
+
+  it("採決に加わらなかった議員がいても残りが全員同じなら split にしない", () => {
+    const result = aggregateFactionStances(
+      FACTIONS,
+      { default: "for", exceptions: [], absent: ["A1"] },
+      ["議長"]
+    );
+    expect(result[0]).toEqual({
+      factionName: "a",
+      type: "for",
+      comment: "採決に加わらず：A1",
+    });
+  });
+
+  it("採決に加わらなかった議員を例外にも指定するとエラーにする", () => {
+    expect(() =>
+      aggregateFactionStances(FACTIONS, {
+        default: "for",
+        exceptions: ["B1"],
+        absent: ["B1"],
+      })
+    ).toThrow("採決に加わらなかった議員が例外に");
+  });
+
   it("名簿にいない議員を例外に指定するとエラーにする", () => {
     expect(() =>
       aggregateFactionStances(FACTIONS, { default: "for", exceptions: ["X"] })
