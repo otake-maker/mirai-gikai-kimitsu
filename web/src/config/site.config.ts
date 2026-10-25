@@ -36,6 +36,8 @@ export const siteConfig = {
     taxMap:
       "https://tax.inshatancountry.com/local-tax/?pref=12&entity=122254" as string,
     report: "https://www.instagram.com/michitakaotake",
+    /** フッターの「ソースコード（GitHub）」のリンク先 */
+    sourceCode: "https://github.com/otake-maker/mirai-gikai-kimitsu",
     aboutNote: "",
     donation: "https://team-mir.ai/support/donation",
     teamAbout: "https://team-mir.ai/about",
