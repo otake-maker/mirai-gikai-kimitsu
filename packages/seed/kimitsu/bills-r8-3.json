@@ -85,28 +85,6 @@
       ]
     }
   ],
-  "tags": [
-    {
-      "label": "防災・安全",
-      "featuredPriority": 1
-    },
-    {
-      "label": "福祉・医療",
-      "featuredPriority": 2
-    },
-    {
-      "label": "まちづくり・環境",
-      "featuredPriority": 3
-    },
-    {
-      "label": "産業・経済",
-      "featuredPriority": 4
-    },
-    {
-      "label": "財政・予算",
-      "featuredPriority": 5
-    }
-  ],
   "bills": [
     {
       "billNumber": "第1号",

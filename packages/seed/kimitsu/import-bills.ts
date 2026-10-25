@@ -16,6 +16,7 @@
 
 import * as fs from "node:fs";
 import * as path from "node:path";
+import { fileURLToPath } from "node:url";
 import { type AdminClient, createAdminClient } from "../shared/helper";
 import {
   type AggregatedStance,
@@ -39,7 +40,9 @@ type BillEntry = {
   decidedDate: string;
   result: string;
   votes: MemberVotes;
-  /** tags[].label のいずれか */
+  /** 省略時は bill。発議案（意見書）は opinion */
+  billType?: BillType;
+  /** tags.json の label のいずれか */
   tags: string[];
   /** トップページの「注目の議案」に出すか */
   isFeatured: boolean;
@@ -65,11 +68,16 @@ type BillsFile = {
   };
   nonVoting: string[];
   factions: (FactionMembers & { displayName: string })[];
-  tags: TagEntry[];
   bills: BillEntry[];
 };
 
-const BILL_TYPE = "bill";
+type BillType = "bill" | "opinion" | "resolution" | "member_bill";
+
+/** タグは会期をまたいで表示順をそろえるため、全会期共通のファイルで管理する */
+const TAGS_FILE = path.join(
+  path.dirname(fileURLToPath(import.meta.url)),
+  "tags.json"
+);
 
 async function upsertTags(
   supabase: AdminClient,
@@ -182,10 +190,11 @@ async function upsertBill(
   publish: boolean
 ): Promise<string> {
   const { status, statusNote } = resultToStatus(bill.result);
+  const billType = bill.billType ?? "bill";
   const values = {
     council_session_id: sessionId,
     bill_number: bill.billNumber,
-    bill_type: BILL_TYPE,
+    bill_type: billType,
     name: bill.name,
     status,
     status_note: statusNote,
@@ -204,7 +213,7 @@ async function upsertBill(
     .select("id")
     .eq("council_session_id", sessionId)
     .eq("bill_number", bill.billNumber)
-    .eq("bill_type", BILL_TYPE)
+    .eq("bill_type", billType)
     .maybeSingle();
   if (selectError) throw selectError;
 
@@ -287,8 +296,10 @@ async function main() {
     fs.readFileSync(path.resolve(process.cwd(), dataArg), "utf-8")
   );
 
+  const tags: TagEntry[] = JSON.parse(fs.readFileSync(TAGS_FILE, "utf-8"));
+
   // 先に全議案を検証・集計し、途中で失敗して中途半端に書き込まれないようにする
-  const tagLabels = new Set(data.tags.map((tag) => tag.label));
+  const tagLabels = new Set(tags.map((tag) => tag.label));
   for (const bill of data.bills) {
     const unknown = bill.tags.filter((label) => !tagLabels.has(label));
     if (unknown.length > 0) {
@@ -327,7 +338,7 @@ async function main() {
 
   const supabase = createAdminClient();
   const factionIds = await upsertFactions(supabase, data.factions);
-  const tagIds = await upsertTags(supabase, data.tags);
+  const tagIds = await upsertTags(supabase, tags);
   const sessionId = await upsertCouncilSession(supabase, data.councilSession);
 
   for (const { bill, stances } of prepared) {

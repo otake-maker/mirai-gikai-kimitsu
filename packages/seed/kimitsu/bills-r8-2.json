@@ -1,0 +1,429 @@
+{
+  "councilSession": {
+    "slug": "r8-2",
+    "name": "令和8年 第2回定例会（6月）",
+    "startDate": "2026-06-08",
+    "endDate": "2026-06-30",
+    "councilUrl": "https://www.city.kimitsu.lg.jp/site/gikai/89547.html"
+  },
+  "sources": {
+    "bills": "https://www.city.kimitsu.lg.jp/site/gikai/89547.html",
+    "results": "https://www.city.kimitsu.lg.jp/uploaded/attachment/60990.pdf",
+    "factions": "https://www.city.kimitsu.lg.jp/uploaded/attachment/57497.pdf"
+  },
+  "nonVoting": [
+    "小倉 靖幸"
+  ],
+  "factions": [
+    {
+      "name": "reiwa-shinsei",
+      "displayName": "令和新政",
+      "members": [
+        "小倉 靖幸",
+        "大和 ヒロシ",
+        "天笠 等",
+        "鶴岡 一成",
+        "三浦 章",
+        "小林 喜久男"
+      ]
+    },
+    {
+      "name": "kirin",
+      "displayName": "麒麟",
+      "members": [
+        "下田 剣吾",
+        "保坂 好一",
+        "高橋 明"
+      ]
+    },
+    {
+      "name": "meiseikai",
+      "displayName": "明政会",
+      "members": [
+        "大滝 浩介",
+        "四宮 安彦",
+        "鈴木 高大"
+      ]
+    },
+    {
+      "name": "kimitsu-mirai",
+      "displayName": "きみつ未来",
+      "members": [
+        "滿武 琢也",
+        "石上 塁",
+        "松本 裕次郎"
+      ]
+    },
+    {
+      "name": "komei",
+      "displayName": "公明党",
+      "members": [
+        "高橋 健治",
+        "佐藤 葉子",
+        "野上 慎治"
+      ]
+    },
+    {
+      "name": "kibou-ni-mirai",
+      "displayName": "希望にみらい（林 祥子）",
+      "members": [
+        "林 祥子"
+      ]
+    },
+    {
+      "name": "kaikaku-kimitsu",
+      "displayName": "改革きみつ（小倉 広紀）",
+      "members": [
+        "小倉 広紀"
+      ]
+    },
+    {
+      "name": "kyosan",
+      "displayName": "日本共産党（三浦 道雄）",
+      "members": [
+        "三浦 道雄"
+      ]
+    }
+  ],
+  "bills": [
+    {
+      "billNumber": "第16号",
+      "name": "君津市久留里線代替交通基金条例の制定について",
+      "officialSummary": "君津市久留里線代替交通基金を設置するため、新たに条例を制定しようとするもの。",
+      "submittedDate": "2026-06-08",
+      "decidedDate": "2026-06-26",
+      "result": "原案可決",
+      "votes": {
+        "default": "for",
+        "exceptions": [
+          "林 祥子"
+        ]
+      },
+      "tags": [
+        "まちづくり・環境"
+      ],
+      "isFeatured": true
+    },
+    {
+      "billNumber": "第17号",
+      "name": "君津市税条例の一部を改正する条例の制定について",
+      "officialSummary": "地方税法等の一部を改正する法律の公布等に伴い、君津市税条例の一部を改正しようとするもの。",
+      "submittedDate": "2026-06-08",
+      "decidedDate": "2026-06-26",
+      "result": "原案可決",
+      "votes": {
+        "default": "for",
+        "exceptions": []
+      },
+      "tags": [
+        "財政・予算"
+      ],
+      "isFeatured": false
+    },
+    {
+      "billNumber": "第18号",
+      "name": "君津市手数料徴収条例の一部を改正する条例の制定について",
+      "officialSummary": "地方公共団体情報システムの標準化に関する法律の施行等に伴い、本市の基幹業務システムを標準準拠システムに移行するに当たり、固定資産税に係る証明書発行の事務取扱いを変更するため、君津市手数料徴収条例の一部を改正しようとするもの。",
+      "submittedDate": "2026-06-08",
+      "decidedDate": "2026-06-26",
+      "result": "原案可決",
+      "votes": {
+        "default": "for",
+        "exceptions": []
+      },
+      "tags": [
+        "財政・予算"
+      ],
+      "isFeatured": false
+    },
+    {
+      "billNumber": "第19号",
+      "name": "君津市特定教育・保育施設及び特定地域型保育事業の運営に関する基準を定める条例の一部を改正する条例の制定について",
+      "officialSummary": "特定教育・保育施設及び特定地域型保育事業並びに特定子ども・子育て支援施設等の運営に関する基準の一部改正に伴い、条例の規定を整理するため、条例の一部を改正しようとするもの。",
+      "submittedDate": "2026-06-08",
+      "decidedDate": "2026-06-26",
+      "result": "原案可決",
+      "votes": {
+        "default": "for",
+        "exceptions": []
+      },
+      "tags": [
+        "子育て・教育"
+      ],
+      "isFeatured": false
+    },
+    {
+      "billNumber": "第20号",
+      "name": "君津市家庭的保育事業等の設備及び運営に関する基準を定める条例等の一部を改正する条例の制定について",
+      "officialSummary": "家庭的保育事業等の設備及び運営に関する基準の一部改正に伴い、条例の規定を整理するため、条例等の一部を改正しようとするもの。",
+      "submittedDate": "2026-06-08",
+      "decidedDate": "2026-06-26",
+      "result": "原案可決",
+      "votes": {
+        "default": "for",
+        "exceptions": []
+      },
+      "tags": [
+        "子育て・教育"
+      ],
+      "isFeatured": false
+    },
+    {
+      "billNumber": "第21号",
+      "name": "君津市乳児等通園支援事業の設備及び運営に関する基準を定める条例の一部を改正する条例の制定について",
+      "officialSummary": "乳児等通園支援事業の設備及び運営に関する基準の一部改正に伴い、条例の規定を整理するため、条例の一部を改正しようとするもの。",
+      "submittedDate": "2026-06-08",
+      "decidedDate": "2026-06-26",
+      "result": "原案可決",
+      "votes": {
+        "default": "for",
+        "exceptions": []
+      },
+      "tags": [
+        "子育て・教育"
+      ],
+      "isFeatured": false
+    },
+    {
+      "billNumber": "第22号",
+      "name": "君津市国保診療所に関する条例の一部を改正する条例の制定について",
+      "officialSummary": "国保松丘診療所について、業務時間を見直すため、君津市国保診療所に関する条例の一部を改正しようとするもの。",
+      "submittedDate": "2026-06-08",
+      "decidedDate": "2026-06-26",
+      "result": "原案可決",
+      "votes": {
+        "default": "for",
+        "exceptions": []
+      },
+      "tags": [
+        "福祉・医療"
+      ],
+      "isFeatured": false
+    },
+    {
+      "billNumber": "第23号",
+      "name": "君津市農業集落排水事業の設置等に関する条例の一部を改正する条例の制定について",
+      "officialSummary": "地方自治法の一部改正に伴い、条例の規定を整理するため、君津市農業集落排水事業の設置等に関する条例の一部を改正しようとするもの。",
+      "submittedDate": "2026-06-08",
+      "decidedDate": "2026-06-26",
+      "result": "原案可決",
+      "votes": {
+        "default": "for",
+        "exceptions": []
+      },
+      "tags": [
+        "まちづくり・環境"
+      ],
+      "isFeatured": false
+    },
+    {
+      "billNumber": "第24号",
+      "name": "君津市森林体験交流センターの設置及び管理に関する条例の一部を改正する条例の制定について",
+      "officialSummary": "君津市木のふるさと文化センターの開館時間、休館日及び使用料を見直すため、君津市森林体験交流センターの設置及び管理に関する条例の一部を改正しようとするもの。",
+      "submittedDate": "2026-06-08",
+      "decidedDate": "2026-06-26",
+      "result": "原案可決",
+      "votes": {
+        "default": "for",
+        "exceptions": [
+          "三浦 章"
+        ]
+      },
+      "tags": [
+        "まちづくり・環境"
+      ],
+      "isFeatured": false
+    },
+    {
+      "billNumber": "第25号",
+      "name": "市有財産賃貸借契約の債務不履行に伴う和解について",
+      "officialSummary": "市有財産賃貸借契約の債務不履行について、和解したいので、地方自治法第96条第1項第12号の規定により、議会の議決を求めようとするもの。",
+      "submittedDate": "2026-06-08",
+      "decidedDate": "2026-06-26",
+      "result": "原案可決",
+      "votes": {
+        "default": "for",
+        "exceptions": []
+      },
+      "tags": [
+        "財政・予算"
+      ],
+      "isFeatured": false
+    },
+    {
+      "billNumber": "第26号",
+      "name": "君津市税条例の一部を改正する条例についての専決処分の承認を求めることについて",
+      "officialSummary": "地方税法等の一部を改正する法律の公布に伴い、君津市税条例の一部を改正する必要が生じ、特に緊急を要するため議会を招集する時間的余裕がないことが明らかであると認め、令和8年3月31日に専決処分したので報告し、承認を求めようとするもの。",
+      "submittedDate": "2026-06-08",
+      "decidedDate": "2026-06-26",
+      "result": "原案可決",
+      "votes": {
+        "default": "for",
+        "exceptions": []
+      },
+      "tags": [
+        "財政・予算"
+      ],
+      "isFeatured": false
+    },
+    {
+      "billNumber": "第27号",
+      "name": "君津市都市計画税条例の一部を改正する条例についての専決処分の承認を求めることについて",
+      "officialSummary": "地方税法等の一部を改正する法律の公布に伴い、君津市都市計画税条例の一部を改正する必要が生じ、令和8年3月31日に専決処分したので報告し、承認を求めようとするもの。",
+      "submittedDate": "2026-06-08",
+      "decidedDate": "2026-06-26",
+      "result": "原案可決",
+      "votes": {
+        "default": "for",
+        "exceptions": []
+      },
+      "tags": [
+        "財政・予算"
+      ],
+      "isFeatured": false
+    },
+    {
+      "billNumber": "第28号",
+      "name": "君津市国民健康保険税条例等の一部を改正する条例についての専決処分の承認を求めることについて",
+      "officialSummary": "地方税法施行令等の一部を改正する政令等の公布に伴い、君津市国民健康保険税条例等の一部を改正する必要が生じ、令和8年3月31日に専決処分したので報告し、承認を求めようとするもの。",
+      "submittedDate": "2026-06-08",
+      "decidedDate": "2026-06-26",
+      "result": "原案可決",
+      "votes": {
+        "default": "for",
+        "exceptions": []
+      },
+      "tags": [
+        "福祉・医療",
+        "財政・予算"
+      ],
+      "isFeatured": false
+    },
+    {
+      "billNumber": "第29号",
+      "name": "令和8年度君津市一般会計補正予算（第2号）",
+      "officialSummary": "補正予算を調製したので、地方自治法第96条第1項第2号の規定により議会の議決を求めようとするもの。補正額2,167,486千円（補正後37,446,057千円）。",
+      "submittedDate": "2026-06-08",
+      "decidedDate": "2026-06-26",
+      "result": "原案可決",
+      "votes": {
+        "default": "for",
+        "exceptions": []
+      },
+      "tags": [
+        "財政・予算"
+      ],
+      "isFeatured": false
+    },
+    {
+      "billNumber": "第30号",
+      "name": "令和8年度君津市一般会計補正予算（第3号）",
+      "officialSummary": "補正予算を調製したので、地方自治法第96条第1項第2号の規定により議会の議決を求めようとするもの。補正額105,187千円（補正後37,551,244千円）。",
+      "submittedDate": "2026-06-16",
+      "decidedDate": "2026-06-26",
+      "result": "原案可決",
+      "votes": {
+        "default": "for",
+        "exceptions": []
+      },
+      "tags": [
+        "財政・予算"
+      ],
+      "isFeatured": false
+    },
+    {
+      "billNumber": "第31号",
+      "name": "令和8年度君津市一般会計補正予算（第4号）",
+      "officialSummary": "補正予算を調製したので、地方自治法第96条第1項第2号の規定により議会の議決を求めようとするもの。補正額0千円（補正後37,551,244千円）。",
+      "submittedDate": "2026-06-26",
+      "decidedDate": "2026-06-30",
+      "result": "原案可決",
+      "votes": {
+        "default": "for",
+        "exceptions": [
+          "下田 剣吾",
+          "保坂 好一",
+          "高橋 明",
+          "大滝 浩介",
+          "四宮 安彦",
+          "鈴木 高大",
+          "林 祥子"
+        ]
+      },
+      "tags": [
+        "財政・予算"
+      ],
+      "isFeatured": true
+    },
+    {
+      "billNumber": "陳情第4号",
+      "name": "「義務教育費国庫負担制度の堅持に関する意見書」採択に関する陳情書",
+      "officialSummary": "義務教育費国庫負担制度の堅持に関する意見書の採択を求める陳情。",
+      "submittedDate": "2026-06-08",
+      "decidedDate": "2026-06-26",
+      "result": "採択",
+      "votes": {
+        "default": "for",
+        "exceptions": []
+      },
+      "tags": [
+        "子育て・教育"
+      ],
+      "isFeatured": false
+    },
+    {
+      "billNumber": "陳情第5号",
+      "name": "「国における2027年度教育予算拡充に関する意見書」採択に関する陳情書",
+      "officialSummary": "国における2027年度教育予算拡充に関する意見書の採択を求める陳情。",
+      "submittedDate": "2026-06-08",
+      "decidedDate": "2026-06-26",
+      "result": "採択",
+      "votes": {
+        "default": "for",
+        "exceptions": [
+          "林 祥子"
+        ]
+      },
+      "tags": [
+        "子育て・教育"
+      ],
+      "isFeatured": false
+    },
+    {
+      "billNumber": "発議案第1号",
+      "name": "義務教育費国庫負担制度の堅持に関する意見書について",
+      "officialSummary": "教育水準の維持向上と地方財政の安定を図るため、国に対し、義務教育費国庫負担制度を堅持するよう意見書を提出するもの（委員会提出）。",
+      "submittedDate": "2026-06-26",
+      "decidedDate": "2026-06-26",
+      "result": "原案可決",
+      "votes": {
+        "default": "for",
+        "exceptions": []
+      },
+      "tags": [
+        "子育て・教育"
+      ],
+      "isFeatured": false,
+      "billType": "opinion"
+    },
+    {
+      "billNumber": "発議案第2号",
+      "name": "国における2027年度教育予算拡充に関する意見書について",
+      "officialSummary": "充実した教育を実現させ、子どもたちの教育環境の整備・拡充を進めるため、国に対し、教育予算の充実を求め、意見書を提出するもの（議員提出）。",
+      "submittedDate": "2026-06-26",
+      "decidedDate": "2026-06-26",
+      "result": "原案可決",
+      "votes": {
+        "default": "for",
+        "exceptions": [
+          "林 祥子"
+        ]
+      },
+      "tags": [
+        "子育て・教育"
+      ],
+      "isFeatured": false,
+      "billType": "opinion"
+    }
+  ]
+}
