@@ -39,10 +39,20 @@ type BillEntry = {
   decidedDate: string;
   result: string;
   votes: MemberVotes;
+  /** tags[].label のいずれか */
+  tags: string[];
+  /** トップページの「注目の議案」に出すか */
+  isFeatured: boolean;
   contents?: {
     normal: BillContentEntry;
     hard: BillContentEntry;
   };
+};
+
+type TagEntry = {
+  label: string;
+  /** トップページのタグ別一覧での表示順（小さいほど上）。null なら一覧に出さない */
+  featuredPriority: number | null;
 };
 
 type BillsFile = {
@@ -55,10 +65,51 @@ type BillsFile = {
   };
   nonVoting: string[];
   factions: (FactionMembers & { displayName: string })[];
+  tags: TagEntry[];
   bills: BillEntry[];
 };
 
 const BILL_TYPE = "bill";
+
+async function upsertTags(
+  supabase: AdminClient,
+  tags: TagEntry[]
+): Promise<Map<string, string>> {
+  const { data, error } = await supabase
+    .from("tags")
+    .upsert(
+      tags.map((tag) => ({
+        label: tag.label,
+        featured_priority: tag.featuredPriority,
+      })),
+      { onConflict: "label" }
+    )
+    .select("id, label");
+  if (error) throw error;
+  return new Map(data.map((tag) => [tag.label, tag.id]));
+}
+
+async function replaceBillTags(
+  supabase: AdminClient,
+  billId: string,
+  labels: string[],
+  tagIds: Map<string, string>
+) {
+  const { error: deleteError } = await supabase
+    .from("bills_tags")
+    .delete()
+    .eq("bill_id", billId);
+  if (deleteError) throw deleteError;
+  if (labels.length === 0) return;
+
+  const rows = labels.map((label) => {
+    const tagId = tagIds.get(label);
+    if (!tagId) throw new Error(`タグが見つかりません: ${label}`);
+    return { bill_id: billId, tag_id: tagId };
+  });
+  const { error } = await supabase.from("bills_tags").insert(rows);
+  if (error) throw error;
+}
 
 async function upsertFactions(
   supabase: AdminClient,
@@ -141,6 +192,7 @@ async function upsertBill(
     submitted_date: bill.submittedDate,
     decided_date: bill.decidedDate,
     source_url: sourceUrl,
+    is_featured: bill.isFeatured,
     ...(publish
       ? { publish_status: "published" as const, published_at: new Date().toISOString() }
       : {}),
@@ -236,6 +288,15 @@ async function main() {
   );
 
   // 先に全議案を検証・集計し、途中で失敗して中途半端に書き込まれないようにする
+  const tagLabels = new Set(data.tags.map((tag) => tag.label));
+  for (const bill of data.bills) {
+    const unknown = bill.tags.filter((label) => !tagLabels.has(label));
+    if (unknown.length > 0) {
+      throw new Error(
+        `${bill.billNumber} に未定義のタグがあります: ${unknown.join(", ")}`
+      );
+    }
+  }
   const prepared = data.bills.map((bill) => ({
     bill,
     status: resultToStatus(bill.result),
@@ -250,8 +311,9 @@ async function main() {
       .map((s) => `${s.factionName}:${s.type}`)
       .join(" ");
     const hasContents = bill.contents ? "解説あり" : "解説なし";
+    const featured = bill.isFeatured ? "★注目 " : "";
     console.log(
-      `  ${bill.billNumber} ${status.status}${status.statusNote ? `(${status.statusNote})` : ""} [${hasContents}] ${summary}`
+      `  ${bill.billNumber} ${status.status}${status.statusNote ? `(${status.statusNote})` : ""} [${hasContents}] ${featured}{${bill.tags.join(",")}} ${summary}`
     );
     for (const s of stances.filter((s) => s.comment)) {
       console.log(`      ${s.factionName}: ${s.comment}`);
@@ -265,6 +327,7 @@ async function main() {
 
   const supabase = createAdminClient();
   const factionIds = await upsertFactions(supabase, data.factions);
+  const tagIds = await upsertTags(supabase, data.tags);
   const sessionId = await upsertCouncilSession(supabase, data.councilSession);
 
   for (const { bill, stances } of prepared) {
@@ -276,6 +339,7 @@ async function main() {
       publish && Boolean(bill.contents)
     );
     await replaceStances(supabase, billId, stances, factionIds);
+    await replaceBillTags(supabase, billId, bill.tags, tagIds);
     if (bill.contents) {
       await upsertContents(supabase, billId, bill.contents);
     }

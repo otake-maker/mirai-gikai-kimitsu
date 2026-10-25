@@ -85,6 +85,28 @@
       ]
     }
   ],
+  "tags": [
+    {
+      "label": "防災・安全",
+      "featuredPriority": 1
+    },
+    {
+      "label": "福祉・医療",
+      "featuredPriority": 2
+    },
+    {
+      "label": "まちづくり・環境",
+      "featuredPriority": 3
+    },
+    {
+      "label": "産業・経済",
+      "featuredPriority": 4
+    },
+    {
+      "label": "財政・予算",
+      "featuredPriority": 5
+    }
+  ],
   "bills": [
     {
       "billNumber": "第1号",
@@ -97,6 +119,10 @@
         "default": "for",
         "exceptions": []
       },
+      "tags": [
+        "防災・安全"
+      ],
+      "isFeatured": false,
       "contents": {
         "normal": {
           "title": "災害派遣で働く市職員の手当を引き上げ",
@@ -121,6 +147,10 @@
         "default": "for",
         "exceptions": []
       },
+      "tags": [
+        "まちづくり・環境"
+      ],
+      "isFeatured": false,
       "contents": {
         "normal": {
           "title": "自治会などの印鑑登録の条例を、国の規則の変更に合わせて整理",
@@ -145,6 +175,10 @@
         "default": "for",
         "exceptions": []
       },
+      "tags": [
+        "産業・経済"
+      ],
+      "isFeatured": false,
       "contents": {
         "normal": {
           "title": "中小企業向け融資の条例を、国の法律の変更に合わせて整理",
@@ -171,6 +205,10 @@
           "三浦 道雄"
         ]
       },
+      "tags": [
+        "まちづくり・環境"
+      ],
+      "isFeatured": true,
       "contents": {
         "normal": {
           "title": "内みのわ運動公園のリニューアル工事、約9.4億円で契約",
@@ -195,6 +233,10 @@
         "default": "for",
         "exceptions": []
       },
+      "tags": [
+        "防災・安全"
+      ],
+      "isFeatured": false,
       "contents": {
         "normal": {
           "title": "消防・救急のデジタル無線機を約1,690万円で購入",
@@ -219,6 +261,11 @@
         "default": "for",
         "exceptions": []
       },
+      "tags": [
+        "防災・安全",
+        "財政・予算"
+      ],
+      "isFeatured": false,
       "contents": {
         "normal": {
           "title": "市税の還付と災害復旧のため、市長が先に決めた補正予算（約3.3億円）を承認",
@@ -243,6 +290,10 @@
         "default": "for",
         "exceptions": []
       },
+      "tags": [
+        "財政・予算"
+      ],
+      "isFeatured": false,
       "contents": {
         "normal": {
           "title": "前年度の余ったお金約18億円を貯金に回す補正予算（約20億円）",
@@ -267,6 +318,11 @@
         "default": "for",
         "exceptions": []
       },
+      "tags": [
+        "福祉・医療",
+        "財政・予算"
+      ],
+      "isFeatured": false,
       "contents": {
         "normal": {
           "title": "国民健康保険の事務費を約446万円追加",
@@ -291,6 +347,11 @@
         "default": "for",
         "exceptions": []
       },
+      "tags": [
+        "福祉・医療",
+        "財政・予算"
+      ],
+      "isFeatured": false,
       "contents": {
         "normal": {
           "title": "介護保険の前年度の繰越金で、基金積立と国・県への返還",
@@ -315,6 +376,11 @@
         "default": "for",
         "exceptions": []
       },
+      "tags": [
+        "防災・安全",
+        "財政・予算"
+      ],
+      "isFeatured": false,
       "contents": {
         "normal": {
           "title": "市税の還付と災害復旧の追加予算（約8,287万円）",
@@ -339,6 +405,11 @@
         "default": "for",
         "exceptions": []
       },
+      "tags": [
+        "防災・安全",
+        "財政・予算"
+      ],
+      "isFeatured": false,
       "contents": {
         "normal": {
           "title": "災害復旧と予備費の追加予算（約7.2億円）、最終日に提出・可決",
@@ -371,6 +442,10 @@
           "三浦 道雄"
         ]
       },
+      "tags": [
+        "財政・予算"
+      ],
+      "isFeatured": true,
       "contents": {
         "normal": {
           "title": "令和7年度の一般会計決算、賛成多数で認定（実質収支は約21億円の黒字）",
@@ -397,6 +472,11 @@
           "三浦 道雄"
         ]
       },
+      "tags": [
+        "福祉・医療",
+        "財政・予算"
+      ],
+      "isFeatured": false,
       "contents": {
         "normal": {
           "title": "令和7年度の国民健康保険の決算を認定",
@@ -423,6 +503,11 @@
           "三浦 道雄"
         ]
       },
+      "tags": [
+        "福祉・医療",
+        "財政・予算"
+      ],
+      "isFeatured": false,
       "contents": {
         "normal": {
           "title": "令和7年度の介護保険の決算を認定",
@@ -449,6 +534,11 @@
           "三浦 道雄"
         ]
       },
+      "tags": [
+        "福祉・医療",
+        "財政・予算"
+      ],
+      "isFeatured": false,
       "contents": {
         "normal": {
           "title": "令和7年度の後期高齢者医療の決算を認定",
@@ -473,6 +563,11 @@
         "default": "for",
         "exceptions": []
       },
+      "tags": [
+        "まちづくり・環境",
+        "財政・予算"
+      ],
+      "isFeatured": false,
       "contents": {
         "normal": {
           "title": "農業集落排水事業の令和7年度決算を認定（約817万円の黒字）",
@@ -499,6 +594,11 @@
           "林 祥子"
         ]
       },
+      "tags": [
+        "防災・安全",
+        "まちづくり・環境"
+      ],
+      "isFeatured": true,
       "contents": {
         "normal": {
           "title": "九十九里沖のCO2貯留（CCS）事業の中止を国に求める陳情、不採択",
