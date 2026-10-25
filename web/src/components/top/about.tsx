@@ -62,18 +62,6 @@ export function About() {
 
                 <div className="flex flex-col gap-4">
                   <LinkButton
-                    href="https://team-mir.ai/"
-                    icon={{
-                      src: "/img/logo.svg",
-                      alt: "",
-                      width: 23,
-                      height: 22,
-                    }}
-                  >
-                    「チームみらい」について
-                  </LinkButton>
-
-                  <LinkButton
                     href="https://gikai.team-mir.ai/"
                     icon={{
                       src: "/icons/interview-icon-3.svg",
