@@ -9,7 +9,9 @@
  *   pnpm --filter @mirai-gikai/seed exec tsx --env-file=../../.env \
  *     kimitsu/import-bills.ts kimitsu/bills-r8-3.json [--dry-run] [--publish]
  *
- * --publish を付けると議案を published にする（付けない場合、新規の議案は draft）。
+ * --publish を付けると、解説（contents）がある議案だけを published にする。
+ * 解説は JSON に入れる前にユーザーの確認を取ること（AGENTS.md「AI生成コンテンツのDB更新ルール」）。
+ * 付けない場合、新規の議案は draft で登録する。
  */
 
 import * as fs from "node:fs";
@@ -271,7 +273,7 @@ async function main() {
       sessionId,
       data.councilSession.councilUrl,
       bill,
-      publish
+      publish && Boolean(bill.contents)
     );
     await replaceStances(supabase, billId, stances, factionIds);
     if (bill.contents) {
