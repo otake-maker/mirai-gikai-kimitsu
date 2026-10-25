@@ -2,7 +2,7 @@ name: Integration Tests
 
 on:
   push:
-    branches: [fukuoka-city/develop]
+    branches: [kimitsu/develop]
 
 jobs:
   integration-test:
