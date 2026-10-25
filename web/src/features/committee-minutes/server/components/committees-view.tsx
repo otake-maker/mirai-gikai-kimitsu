@@ -1,4 +1,5 @@
 import "server-only";
+import { siteConfig } from "@/config/site.config";
 import { CalendarDays, ChevronRight, Landmark } from "lucide-react";
 import Link from "next/link";
 import type {
@@ -38,7 +39,8 @@ export function CommitteesView({ archives, meetings }: Props) {
           委員会で話し合われたこと
         </h1>
         <p className="text-sm text-mirai-text-secondary leading-relaxed">
-          福岡市議会には、テーマごとにくわしく議論する「委員会」があります。
+          {siteConfig.councilName}
+          には、テーマごとにくわしく議論する「委員会」があります。
           それぞれの委員会でどんな質疑や答弁があったのかを、会議ごとに記録して残していきます。
         </p>
       </header>

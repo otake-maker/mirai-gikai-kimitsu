@@ -7,15 +7,17 @@ import { Search } from "lucide-react";
 import { DifficultySelector } from "@/features/bill-difficulty/client/components/difficulty-selector";
 import type { DifficultyLevelEnum } from "@/features/bill-difficulty/shared/types";
 import { InterviewHeaderActions } from "@/features/interview-session/client/components/interview-header-actions";
+import type { NavLink } from "@/features/site-contents/shared/types";
 import { isInterviewPage, isMainPage } from "@/lib/page-layout-utils";
 import { siteConfig } from "@/config/site.config";
 import { HamburgerMenu } from "./hamburger-menu";
 
 interface HeaderClientProps {
   difficultyLevel: DifficultyLevelEnum;
+  navLinks: NavLink[];
 }
 
-export function HeaderClient({ difficultyLevel }: HeaderClientProps) {
+export function HeaderClient({ difficultyLevel, navLinks }: HeaderClientProps) {
   const pathname = usePathname();
   const showDifficultySelector = isMainPage(pathname);
   const showInterviewActions = isInterviewPage(pathname);
@@ -61,7 +63,7 @@ export function HeaderClient({ difficultyLevel }: HeaderClientProps) {
             >
               <Search className="size-5" />
             </Link>
-            <HamburgerMenu />
+            <HamburgerMenu links={navLinks} />
           </nav>
         </div>
       </div>

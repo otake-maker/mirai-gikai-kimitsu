@@ -1,6 +1,7 @@
 "use client";
 
 import { ExternalLink, FileText, Mic, PlayCircle } from "lucide-react";
+import { siteConfig } from "@/config/site.config";
 import type { PressConference } from "../../shared/types";
 import { QaItem } from "./qa-item";
 
@@ -32,7 +33,8 @@ export function PressConferenceDetail({ pressConference }: Props) {
           {pressConference.title}
         </h1>
         <p className="text-sm text-mirai-text-secondary leading-relaxed">
-          高島市長が記者の皆さんと直接やりとりした内容を、わかりやすくお届けします。
+          {siteConfig.mayorLabel}
+          が記者の皆さんと直接やりとりした内容を、わかりやすくお届けします。
         </p>
         {pressConference.youtubeUrl && (
           <a

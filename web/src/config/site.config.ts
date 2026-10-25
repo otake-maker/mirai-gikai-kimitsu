@@ -22,8 +22,18 @@ export const siteConfig = {
   /** 議案・議決結果の一覧ページ */
   councilBillsDetailUrl:
     "https://www.city.kimitsu.lg.jp/site/gikai/list46-56.html",
+  /** 議会の会議録検索システム */
+  councilMinutesSearchUrl:
+    "https://ssp.kaigiroku.net/tenant/kimitsu/pg/index.html",
+  /** 市長の呼び方（記者会見ページなどで使用） */
+  mayorLabel: "石井市長",
   twitterHashtag: "みらい議会君津市版", // # なし
   externalLinks: {
+    /**
+     * 「税金の使い道マップ」（外部サイト）の自治体ページ。
+     * 空文字列の場合はトップページ・メニューのリンクを表示しない。
+     */
+    taxMap: "" as string,
     report: "https://www.instagram.com/michitakaotake",
     aboutNote: "",
     donation: "https://team-mir.ai/support/donation",
@@ -61,5 +71,10 @@ export const siteConfig = {
      * 非公式運営など、党の公式サービスとして出さない場合は false にする。
      */
     showTeamMiraiSection: false as boolean,
+    /**
+     * 選挙特設ページ（/election）とトップページのバナーの表示。
+     * 現在の中身は福岡市長選挙のデータのため、君津市版では false にしている。
+     */
+    election: false as boolean,
   },
 } as const;

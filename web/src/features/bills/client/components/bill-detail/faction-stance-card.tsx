@@ -55,18 +55,18 @@ function FactionStanceRow({ stance }: FactionStanceRowProps) {
   );
 }
 
-// 無所属議員の個人名一覧（福岡市議会）
-const MUSHOZOKU_MEMBERS = [
-  "あべ ひでき",
-  "新開 ゆうじ",
-  "木村 てつあき",
-  "森 あやこ",
-  "川口 浩",
-];
+// 無所属議員の個人名一覧。空の場合は「無所属」を1行のまま表示する。
+// 君津市議会（令和7年11月10日現在の会派別議員名簿）には無所属議員がいない。
+const MUSHOZOKU_MEMBERS: string[] = [];
 
 function expandStances(stances: FactionStance[]): FactionStance[] {
   return stances.flatMap((stance) => {
-    if (stance.faction.display_name !== "無所属") return [stance];
+    if (
+      stance.faction.display_name !== "無所属" ||
+      MUSHOZOKU_MEMBERS.length === 0
+    ) {
+      return [stance];
+    }
     return MUSHOZOKU_MEMBERS.map((name, i) => ({
       ...stance,
       id: `${stance.id}-${i}`,

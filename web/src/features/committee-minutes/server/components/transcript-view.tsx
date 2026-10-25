@@ -1,8 +1,8 @@
 import "server-only";
+import { siteConfig } from "@/config/site.config";
 import { ArrowLeft, ExternalLink } from "lucide-react";
 import Link from "next/link";
 import { ChatTranscript } from "../../client/components/chat-transcript";
-import { MINUTES_SEARCH_BY_MEETING_URL } from "../../shared/constants";
 import type { CommitteeMeetingDetail } from "../../shared/types";
 import { buildTranscriptSections } from "../../shared/utils/build-transcript-sections";
 import { formatJapaneseDate } from "../../shared/utils/format-japanese-date";
@@ -38,17 +38,17 @@ export function TranscriptView({ meeting }: Props) {
       <p className="text-xs text-mirai-text-muted">
         出典:{" "}
         <a
-          href={MINUTES_SEARCH_BY_MEETING_URL}
+          href={siteConfig.councilMinutesSearchUrl}
           target="_blank"
           rel="noopener noreferrer"
           className="inline-flex items-center gap-1 text-primary-accent hover:underline"
         >
-          福岡市議会 会議録検索システム
+          {siteConfig.councilName} 会議録検索システム
           <ExternalLink className="size-3" />
         </a>
         <br />
-        「会議名でさがす」で{meeting.committeeName}を選ぶと、
-        {formatJapaneseDate(meeting.meetingDate)}の記録を確認できます。
+        {meeting.committeeName}の{formatJapaneseDate(meeting.meetingDate)}
+        の記録を検索して確認できます。
       </p>
     </div>
   );

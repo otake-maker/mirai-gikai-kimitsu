@@ -1,6 +1,7 @@
 "use client";
 
 import { ChevronRight } from "lucide-react";
+import { siteConfig } from "@/config/site.config";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import type { PressConference } from "../../shared/types";
@@ -19,7 +20,8 @@ export function PressConferenceArchiveSection({ pressConferences }: Props) {
           市長記者会見
         </h2>
         <p className="text-xs text-mirai-text-secondary">
-          高島市長が記者の皆さんと直接やりとりした内容をわかりやすくお届けします
+          {siteConfig.mayorLabel}
+          が記者の皆さんと直接やりとりした内容をわかりやすくお届けします
         </p>
       </div>
 

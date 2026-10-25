@@ -29,6 +29,7 @@ import { PressConferenceArchiveSection } from "@/features/press-conferences/clie
 import { PressConferenceNoticeBanner } from "@/features/press-conferences/client/components/press-conference-notice-banner";
 import { getLatestPressConference } from "@/features/press-conferences/server/loaders/get-latest-press-conference";
 import { getPressConferences } from "@/features/press-conferences/server/loaders/get-press-conferences";
+import { getAvailableContents } from "@/features/site-contents/server/loaders/get-available-contents";
 import { getJapanTime } from "@/lib/utils/date";
 
 export default async function Home() {
@@ -44,6 +45,7 @@ export default async function Home() {
     latestPressConference,
     pressConferences,
     latestBudgetSession,
+    availableContents,
   ] = await Promise.all([
     getCurrentCouncilSession(getJapanTime()),
     getDifficultyLevel(),
@@ -53,7 +55,14 @@ export default async function Home() {
     getLatestPressConference(),
     getPressConferences(),
     getLatestBudgetSession(),
+    getAvailableContents(),
   ]);
+
+  const hasTaxMap = Boolean(siteConfig.externalLinks.taxMap);
+  const showMoneyBanners =
+    Boolean(latestBudgetSession?.slug) ||
+    availableContents.jimuJigyo ||
+    hasTaxMap;
 
   const toBillChatContext = (bill: BillWithContent) => {
     return {
@@ -68,7 +77,7 @@ export default async function Home() {
     <>
       <Hero />
 
-      {/* 福岡市長選挙 特設ページバナー（投開票日を過ぎたら非表示） */}
+      {/* 選挙特設ページバナー（無効設定時・投開票日を過ぎたら非表示） */}
       <ElectionBanner />
 
       {/* 本日の定例会セクション */}
@@ -91,23 +100,27 @@ export default async function Home() {
       )}
 
       {/* 委員会バナー */}
-      <Container className="pt-3">
-        <CommitteeBanner />
-      </Container>
+      {availableContents.committees && (
+        <Container className="pt-3">
+          <CommitteeBanner />
+        </Container>
+      )}
 
       {/* 予算・事務事業評価・お金の使い道（まとめてアコーディオン） */}
-      <Container className="pt-3">
-        <BannerAccordion
-          title="福岡市の予算・評価・お金の使い道"
-          description="各局の重点施策、事務事業評価、財政の状況をまとめて見る"
-        >
-          {latestBudgetSession?.slug && (
-            <BudgetOverviewBanner sessionSlug={latestBudgetSession.slug} />
-          )}
-          <JimuJigyoBanner />
-          <CityFinanceBanner />
-        </BannerAccordion>
-      </Container>
+      {showMoneyBanners && (
+        <Container className="pt-3">
+          <BannerAccordion
+            title={`${siteConfig.cityName}の予算・評価・お金の使い道`}
+            description="各局の重点施策、事務事業評価、財政の状況をまとめて見る"
+          >
+            {latestBudgetSession?.slug && (
+              <BudgetOverviewBanner sessionSlug={latestBudgetSession.slug} />
+            )}
+            {availableContents.jimuJigyo && <JimuJigyoBanner />}
+            {hasTaxMap && <CityFinanceBanner />}
+          </BannerAccordion>
+        </Container>
+      )}
 
       {/* 議案一覧セクション */}
       <Container className="">
@@ -133,7 +146,7 @@ export default async function Home() {
             <PressConferenceArchiveSection
               pressConferences={pressConferences}
             />
-            <JimuJigyoArchiveSection />
+            {availableContents.jimuJigyo && <JimuJigyoArchiveSection />}
           </div>
         </Container>
       </div>

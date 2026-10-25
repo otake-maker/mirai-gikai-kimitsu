@@ -1,4 +1,5 @@
 import { openai } from "@ai-sdk/openai";
+import { siteConfig } from "@/config/site.config";
 import type { Database } from "@mirai-gikai/supabase";
 import {
   convertToModelMessages,
@@ -251,7 +252,7 @@ function buildBudgetPrompt(context: ChatMessageMetadata) {
       })
       .join("\n\n") ?? "";
 
-  const content = `あなたは福岡市の予算概要を市民にわかりやすく説明するAIアシスタントです。
+  const content = `あなたは${siteConfig.cityName}の予算概要を市民にわかりやすく説明するAIアシスタントです。
 
 ## 対象局の情報
 - 局名: ${budget?.departmentName ?? ""}

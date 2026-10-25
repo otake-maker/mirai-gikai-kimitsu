@@ -1,4 +1,5 @@
 import "server-only";
+import { siteConfig } from "@/config/site.config";
 import { ChevronLeft } from "lucide-react";
 import Link from "next/link";
 import { YEAR_METADATA } from "../loaders/load-jimu-jigyo-list";
@@ -16,7 +17,8 @@ export function JimuJigyoArchivePage() {
         </Link>
         <h1 className="text-2xl font-bold text-mirai-text">事務事業評価</h1>
         <p className="text-sm text-mirai-text-secondary mt-1">
-          福岡市が公開する事務事業マネジメントシートをもとに、市民の視点で評価・可視化しています。
+          {siteConfig.cityName}
+          が公開する事務事業マネジメントシートをもとに、市民の視点で評価・可視化しています。
         </p>
         <div className="mt-2">
           <Link

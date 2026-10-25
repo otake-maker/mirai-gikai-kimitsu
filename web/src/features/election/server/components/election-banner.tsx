@@ -2,6 +2,7 @@ import "server-only";
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 import { Container } from "@/components/layouts/container";
+import { siteConfig } from "@/config/site.config";
 import { CANDIDATES } from "../../shared/data/candidates";
 import { ISSUES } from "../../shared/data/issues";
 import { ELECTION_SCHEDULE } from "../../shared/data/schedule";
@@ -16,6 +17,10 @@ import {
  * 投開票日を過ぎたら非表示にする（結果ページを用意するまでの暫定運用）。
  */
 export function ElectionBanner() {
+  if (!siteConfig.features.election) {
+    return null;
+  }
+
   const now = new Date();
   const phase = getElectionPhase(now, ELECTION_SCHEDULE);
   if (phase === "after-vote") {
