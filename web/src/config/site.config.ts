@@ -33,7 +33,8 @@ export const siteConfig = {
      * 「税金の使い道マップ」（外部サイト）の自治体ページ。
      * 空文字列の場合はトップページ・メニューのリンクを表示しない。
      */
-    taxMap: "" as string,
+    taxMap:
+      "https://tax.inshatancountry.com/local-tax/?pref=12&entity=122254" as string,
     report: "https://www.instagram.com/michitakaotake",
     aboutNote: "",
     donation: "https://team-mir.ai/support/donation",
