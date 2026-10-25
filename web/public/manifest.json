@@ -9,7 +9,7 @@
   "orientation": "portrait-primary",
   "icons": [
     {
-      "src": "/icons/pwa/icon_fukuoka.svg",
+      "src": "/icons/pwa/icon_kimitsu.svg",
       "sizes": "any",
       "type": "image/svg+xml",
       "purpose": "any maskable"

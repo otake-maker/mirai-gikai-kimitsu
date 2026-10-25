@@ -31,8 +31,8 @@ export const metadata: Metadata = {
   description: siteConfig.siteDescription,
   keywords: [...siteConfig.keywords],
   icons: {
-    icon: "/icons/pwa/icon_fukuoka.svg",
-    apple: "/icons/pwa/icon_fukuoka.svg",
+    icon: "/icons/pwa/icon_kimitsu.svg",
+    apple: "/icons/pwa/icon_kimitsu.svg",
   },
   manifest: "/manifest.json",
   openGraph: {
