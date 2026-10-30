@@ -5,12 +5,22 @@ import { siteConfig } from "@/config/site.config";
 export function Hero() {
   return (
     <div className="relative w-full h-[80vh] min-h-[400px] md:h-[70vh]">
+      {/* スマホは縦長、PC（md以上）は横長の背景を出し分ける */}
+      <Image
+        src="/img/hero_background_mobile.png"
+        alt={siteConfig.councilName}
+        fill
+        priority
+        className="object-cover md:hidden"
+        sizes="100vw"
+        quality={85}
+      />
       <Image
         src="/img/hero_background.png"
         alt={siteConfig.councilName}
         fill
         priority
-        className="object-cover"
+        className="object-cover hidden md:block"
         sizes="100vw"
         quality={85}
       />
