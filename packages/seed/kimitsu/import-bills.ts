@@ -7,7 +7,10 @@
  *
  * 実行方法（ローカルDB）:
  *   pnpm --filter @mirai-gikai/seed exec tsx --env-file=../../.env \
- *     kimitsu/import-bills.ts kimitsu/bills-r8-3.json [--dry-run] [--publish]
+ *     kimitsu/import-bills.ts kimitsu/bills-r8-3.json [--dry-run] [--publish] [--active]
+ *
+ * --active を付けると、この会期を「いまの定例会」（is_active）にし、ほかの会期は外す。
+ * トップページはこの会期の議案だけを表示するので、最新の会期を取り込むときに付ける。
  *
  * --publish を付けると、解説（contents）がある議案だけを published にする。
  * 解説は JSON に入れる前にユーザーの確認を取ること（AGENTS.md「AI生成コンテンツのDB更新ルール」）。
@@ -193,6 +196,21 @@ async function upsertCouncilSession(
   return data.id;
 }
 
+/** is_active は1会期だけにする（トップページは maybeSingle で1件を取るため） */
+async function activateCouncilSession(supabase: AdminClient, sessionId: string) {
+  const { error: clearError } = await supabase
+    .from("council_sessions")
+    .update({ is_active: false })
+    .neq("id", sessionId);
+  if (clearError) throw clearError;
+
+  const { error } = await supabase
+    .from("council_sessions")
+    .update({ is_active: true })
+    .eq("id", sessionId);
+  if (error) throw error;
+}
+
 async function upsertBill(
   supabase: AdminClient,
   sessionId: string,
@@ -295,6 +313,7 @@ async function main() {
   const [dataArg] = process.argv.slice(2).filter((a) => !a.startsWith("--"));
   const isDryRun = process.argv.includes("--dry-run");
   const publish = process.argv.includes("--publish");
+  const activate = process.argv.includes("--active");
 
   if (!dataArg) {
     console.error(
@@ -346,6 +365,10 @@ async function main() {
     }
   }
 
+  if (activate) {
+    console.log(`⭐ ${data.councilSession.name} を「いまの定例会」にします`);
+  }
+
   if (isDryRun) {
     console.log("🔍 --dry-run のため DB には書き込みません");
     return;
@@ -355,6 +378,9 @@ async function main() {
   const factionIds = await upsertFactions(supabase, data.factions);
   const tagIds = await upsertTags(supabase, tags);
   const sessionId = await upsertCouncilSession(supabase, data.councilSession);
+  if (activate) {
+    await activateCouncilSession(supabase, sessionId);
+  }
 
   for (const { bill, stances } of prepared) {
     const billId = await upsertBill(
