@@ -7,6 +7,7 @@ export function buildNavLinks(available: AvailableContents): NavLink[] {
   const links: (NavLink & { visible: boolean })[] = [
     { href: "/", label: "トップページ", visible: true },
     { href: "/sessions", label: "過去の定例会", visible: true },
+    { href: "/factions", label: "会派ごとの賛否", visible: true },
     { href: "/committees", label: "委員会", visible: available.committees },
     { href: "/budget", label: "過去の予算", visible: available.budget },
     {
