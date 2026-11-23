@@ -2,7 +2,7 @@ import "server-only";
 
 import { createAdminClient } from "@mirai-gikai/supabase";
 import type { DifficultyLevelEnum } from "@/features/bill-difficulty/shared/types";
-import type { Faction } from "../../shared/types";
+import type { CouncilMember, Faction } from "../../shared/types";
 
 /** PostgREST が1回に返す行数の上限 */
 const PAGE_SIZE = 1000;
@@ -26,7 +26,23 @@ export async function findAllFactions(): Promise<Faction[]> {
 }
 
 /**
- * 公開済み議案を、会期・タグ・各会派の賛否・解説タイトル付きで全件取得
+ * 議員を全件取得
+ */
+export async function findAllCouncilMembers(): Promise<CouncilMember[]> {
+  const supabase = createAdminClient();
+  const { data, error } = await supabase
+    .from("council_members")
+    .select("id, name");
+
+  if (error) {
+    throw new Error(`Failed to fetch council members: ${error.message}`);
+  }
+
+  return data;
+}
+
+/**
+ * 公開済み議案を、会期・タグ・各会派と各議員の賛否・解説タイトル付きで全件取得
  */
 export async function findPublishedBillsWithStances(
   difficultyLevel: DifficultyLevelEnum
@@ -48,6 +64,7 @@ export async function findPublishedBillsWithStances(
         council_sessions (name, start_date),
         bill_contents (title, difficulty_level),
         faction_stances (faction_id, type),
+        member_votes (member_id, faction_id, vote),
         bills_tags (tags (label))
       `
       )

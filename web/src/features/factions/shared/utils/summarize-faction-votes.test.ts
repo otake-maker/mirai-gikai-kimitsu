@@ -12,6 +12,7 @@ function bill(
   overrides: Partial<BillVotes> & Pick<BillVotes, "billId" | "stances">
 ): BillVotes {
   return {
+    memberVotes: [],
     billNumber: "第1号",
     title: "テスト議案",
     status: "approved",

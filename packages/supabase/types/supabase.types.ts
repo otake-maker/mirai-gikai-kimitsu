@@ -603,6 +603,27 @@ export type Database = {
         }
         Relationships: []
       }
+      council_members: {
+        Row: {
+          created_at: string
+          id: string
+          name: string
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          name: string
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          name?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
       council_sessions: {
         Row: {
           council_url: string | null
@@ -1504,6 +1525,58 @@ export type Database = {
           },
         ]
       }
+      member_votes: {
+        Row: {
+          bill_id: string
+          created_at: string
+          faction_id: string
+          id: string
+          member_id: string
+          updated_at: string
+          vote: Database["public"]["Enums"]["member_vote_type_enum"]
+        }
+        Insert: {
+          bill_id: string
+          created_at?: string
+          faction_id: string
+          id?: string
+          member_id: string
+          updated_at?: string
+          vote: Database["public"]["Enums"]["member_vote_type_enum"]
+        }
+        Update: {
+          bill_id?: string
+          created_at?: string
+          faction_id?: string
+          id?: string
+          member_id?: string
+          updated_at?: string
+          vote?: Database["public"]["Enums"]["member_vote_type_enum"]
+        }
+        Relationships: [
+          {
+            foreignKeyName: "member_votes_bill_id_fkey"
+            columns: ["bill_id"]
+            isOneToOne: false
+            referencedRelation: "bills"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "member_votes_faction_id_fkey"
+            columns: ["faction_id"]
+            isOneToOne: false
+            referencedRelation: "factions"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "member_votes_member_id_fkey"
+            columns: ["member_id"]
+            isOneToOne: false
+            referencedRelation: "council_members"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       press_conference_items: {
         Row: {
           created_at: string | null
@@ -1951,6 +2024,7 @@ export type Database = {
         | "daily_life_affected"
         | "general_citizen"
       interview_role_enum: "assistant" | "user"
+      member_vote_type_enum: "for" | "against" | "absent" | "not_voting"
       stance_type_enum:
         | "for"
         | "against"
@@ -2113,6 +2187,7 @@ export const Constants = {
         "general_citizen",
       ],
       interview_role_enum: ["assistant", "user"],
+      member_vote_type_enum: ["for", "against", "absent", "not_voting"],
       stance_type_enum: [
         "for",
         "against",

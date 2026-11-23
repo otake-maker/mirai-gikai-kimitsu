@@ -29,7 +29,7 @@ export function isUnanimous(stances: BillVotes["stances"]): boolean {
 }
 
 /** 新しい順（議決日 → 会期の開始日）に並べるための比較関数 */
-function compareNewestFirst(a: BillVotes, b: BillVotes): number {
+export function compareNewestFirst(a: BillVotes, b: BillVotes): number {
   const byDate = (b.decidedDate ?? "").localeCompare(a.decidedDate ?? "");
   if (byDate !== 0) return byDate;
   return b.sessionStartDate.localeCompare(a.sessionStartDate);
@@ -40,17 +40,19 @@ export function extractFactionVotes(
   bills: BillVotes[],
   factionId: string
 ): FactionVote[] {
-  return [...bills].sort(compareNewestFirst).flatMap(({ stances, ...bill }) => {
-    const own = stances.find((s) => s.factionId === factionId);
-    if (!own) return [];
-    return [
-      {
-        ...bill,
-        stance: toStanceGroup(own.type),
-        isUnanimous: isUnanimous(stances),
-      },
-    ];
-  });
+  return [...bills]
+    .sort(compareNewestFirst)
+    .flatMap(({ stances, memberVotes: _memberVotes, ...bill }) => {
+      const own = stances.find((s) => s.factionId === factionId);
+      if (!own) return [];
+      return [
+        {
+          ...bill,
+          stance: toStanceGroup(own.type),
+          isUnanimous: isUnanimous(stances),
+        },
+      ];
+    });
 }
 
 function countStances(votes: FactionVote[]): StanceCounts {
@@ -83,22 +85,24 @@ export function summarizeFactionVotes(
   };
 }
 
-export type ContestedBillRow = Omit<BillVotes, "stances"> & {
+export type ContestedBillRow = Omit<BillVotes, "stances" | "memberVotes"> & {
   /** 会派ID → 賛否（その会期に存在しない会派は含まない） */
   stanceByFaction: Record<string, StanceGroup>;
 };
 
 /** 全会一致でなかった議案について、会派ごとの賛否を並べた表の行を作る（新しい順） */
 export function buildContestedRows(bills: BillVotes[]): ContestedBillRow[] {
-  return [...bills].sort(compareNewestFirst).flatMap(({ stances, ...bill }) => {
-    if (stances.length === 0 || isUnanimous(stances)) return [];
-    return [
-      {
-        ...bill,
-        stanceByFaction: Object.fromEntries(
-          stances.map((s) => [s.factionId, toStanceGroup(s.type)])
-        ),
-      },
-    ];
-  });
+  return [...bills]
+    .sort(compareNewestFirst)
+    .flatMap(({ stances, memberVotes: _memberVotes, ...bill }) => {
+      if (stances.length === 0 || isUnanimous(stances)) return [];
+      return [
+        {
+          ...bill,
+          stanceByFaction: Object.fromEntries(
+            stances.map((s) => [s.factionId, toStanceGroup(s.type)])
+          ),
+        },
+      ];
+    });
 }

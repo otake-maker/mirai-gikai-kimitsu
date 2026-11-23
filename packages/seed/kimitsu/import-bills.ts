@@ -1,7 +1,7 @@
 /**
  * import-bills.ts
  *
- * 君津市議会の議案・議決結果・会派別の賛否（と、あれば AI 解説）を取り込む。
+ * 君津市議会の議案・議決結果・議員別と会派別の賛否（と、あれば AI 解説）を取り込む。
  * データは会期ごとの JSON（例: kimitsu/bills-r8-3.json）で管理する。
  * 同じ JSON を何度流しても結果が変わらないよう、既存レコードは更新する。
  *
@@ -24,7 +24,9 @@ import { type AdminClient, createAdminClient } from "../shared/helper";
 import {
   type AggregatedStance,
   aggregateFactionStances,
+  expandMemberVotes,
   type FactionMembers,
+  type MemberVote,
   type MemberVotes,
 } from "./aggregate-stances";
 import { resultToStatus } from "./result-to-status";
@@ -172,6 +174,50 @@ async function upsertFactions(
   }
 
   return ids;
+}
+
+async function upsertMembers(
+  supabase: AdminClient,
+  names: string[]
+): Promise<Map<string, string>> {
+  const { data, error } = await supabase
+    .from("council_members")
+    .upsert(
+      names.map((name) => ({ name })),
+      { onConflict: "name" }
+    )
+    .select("id, name");
+  if (error) throw error;
+  return new Map(data.map((member) => [member.name, member.id]));
+}
+
+async function replaceMemberVotes(
+  supabase: AdminClient,
+  billId: string,
+  votes: MemberVote[],
+  memberIds: Map<string, string>,
+  factionIds: Map<string, string>
+) {
+  const { error: deleteError } = await supabase
+    .from("member_votes")
+    .delete()
+    .eq("bill_id", billId);
+  if (deleteError) throw deleteError;
+
+  const rows = votes.map((v) => {
+    const memberId = memberIds.get(v.memberName);
+    const factionId = factionIds.get(v.factionName);
+    if (!memberId) throw new Error(`議員が見つかりません: ${v.memberName}`);
+    if (!factionId) throw new Error(`会派が見つかりません: ${v.factionName}`);
+    return {
+      bill_id: billId,
+      member_id: memberId,
+      faction_id: factionId,
+      vote: v.vote,
+    };
+  });
+  const { error } = await supabase.from("member_votes").insert(rows);
+  if (error) throw error;
 }
 
 async function upsertCouncilSession(
@@ -338,15 +384,17 @@ async function main() {
       );
     }
   }
-  const prepared = data.bills.map((bill) => ({
-    bill,
-    status: resultToStatus(bill.result),
-    stances: aggregateFactionStances(
-      data.factions,
-      bill.votes,
-      bill.nonVoting ?? data.nonVoting
-    ),
-  }));
+  // aggregateFactionStances が入力を検証するので、議員別の展開より先に呼ぶ
+  const prepared = data.bills.map((bill) => {
+    const nonVoting = bill.nonVoting ?? data.nonVoting;
+    const stances = aggregateFactionStances(data.factions, bill.votes, nonVoting);
+    return {
+      bill,
+      status: resultToStatus(bill.result),
+      stances,
+      memberVotes: expandMemberVotes(data.factions, bill.votes, nonVoting),
+    };
+  });
 
   console.log(
     `📋 ${data.councilSession.name}: 議案 ${prepared.length} 件 / 会派 ${data.factions.length}`
@@ -376,13 +424,17 @@ async function main() {
 
   const supabase = createAdminClient();
   const factionIds = await upsertFactions(supabase, data.factions);
+  const memberIds = await upsertMembers(
+    supabase,
+    data.factions.flatMap((faction) => faction.members)
+  );
   const tagIds = await upsertTags(supabase, tags);
   const sessionId = await upsertCouncilSession(supabase, data.councilSession);
   if (activate) {
     await activateCouncilSession(supabase, sessionId);
   }
 
-  for (const { bill, stances } of prepared) {
+  for (const { bill, stances, memberVotes } of prepared) {
     const billId = await upsertBill(
       supabase,
       sessionId,
@@ -391,6 +443,13 @@ async function main() {
       publish && Boolean(bill.contents)
     );
     await replaceStances(supabase, billId, stances, factionIds);
+    await replaceMemberVotes(
+      supabase,
+      billId,
+      memberVotes,
+      memberIds,
+      factionIds
+    );
     await replaceBillTags(supabase, billId, bill.tags, tagIds);
     if (bill.contents) {
       await upsertContents(supabase, billId, bill.contents);
@@ -398,7 +457,7 @@ async function main() {
   }
 
   console.log(
-    `✅ 取り込み完了: 議案 ${prepared.length} 件 / 賛否 ${prepared.reduce((n, p) => n + p.stances.length, 0)} 件`
+    `✅ 取り込み完了: 議案 ${prepared.length} 件 / 会派の賛否 ${prepared.reduce((n, p) => n + p.stances.length, 0)} 件 / 議員の賛否 ${prepared.reduce((n, p) => n + p.memberVotes.length, 0)} 件`
   );
 }
 

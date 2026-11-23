@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
 import {
   aggregateFactionStances,
+  expandMemberVotes,
   type FactionMembers,
 } from "./aggregate-stances";
 
@@ -131,5 +132,37 @@ describe("aggregateFactionStances", () => {
         ["議長"]
       )
     ).toThrow("採決に加わらない議員");
+  });
+});
+
+describe("expandMemberVotes", () => {
+  it("議員ごとに、既定の賛否・例外・欠席・採決に加わらない立場を展開する", () => {
+    const result = expandMemberVotes(
+      FACTIONS,
+      { default: "for", exceptions: ["B2"], absent: ["C1"] },
+      ["議長"]
+    );
+    expect(result).toEqual([
+      { memberName: "議長", factionName: "a", vote: "not_voting" },
+      { memberName: "A1", factionName: "a", vote: "for" },
+      { memberName: "A2", factionName: "a", vote: "for" },
+      { memberName: "B1", factionName: "b", vote: "for" },
+      { memberName: "B2", factionName: "b", vote: "against" },
+      { memberName: "B3", factionName: "b", vote: "for" },
+      { memberName: "C1", factionName: "c", vote: "absent" },
+    ]);
+  });
+
+  it("既定が反対なら、例外の議員は賛成になる", () => {
+    const result = expandMemberVotes(
+      FACTIONS,
+      { default: "against", exceptions: ["A1"] },
+      []
+    );
+    expect(result.slice(0, 3).map((v) => v.vote)).toEqual([
+      "against",
+      "for",
+      "against",
+    ]);
   });
 });

@@ -10,11 +10,12 @@ const NONE: AvailableContents = {
 };
 
 describe("buildNavLinks", () => {
-  it("データが無ければトップページ・過去の定例会・会派ごとの賛否だけを返す", () => {
+  it("データが無ければトップページ・過去の定例会・会派・議員ごとの賛否だけを返す", () => {
     expect(buildNavLinks(NONE).map((l) => l.href)).toEqual([
       "/",
       "/sessions",
       "/factions",
+      "/members",
     ]);
   });
 
@@ -28,6 +29,7 @@ describe("buildNavLinks", () => {
       "/",
       "/sessions",
       "/factions",
+      "/members",
       "/committees",
       "/press-conferences",
     ]);
@@ -44,6 +46,7 @@ describe("buildNavLinks", () => {
       { href: "/", label: "トップページ" },
       { href: "/sessions", label: "過去の定例会" },
       { href: "/factions", label: "会派ごとの賛否" },
+      { href: "/members", label: "議員ごとの賛否" },
       { href: "/committees", label: "委員会" },
       { href: "/budget", label: "過去の予算" },
       { href: "/press-conferences", label: "市長記者会見" },

@@ -1,20 +1,22 @@
 import { unstable_cache } from "next/cache";
 import type { DifficultyLevelEnum } from "@/features/bill-difficulty/shared/types";
 import { CACHE_TAGS } from "@/lib/cache-tags";
-import type { BillVotes, Faction } from "../../shared/types";
+import type { BillVotes, CouncilMember, Faction } from "../../shared/types";
 import {
+  findAllCouncilMembers,
   findAllFactions,
   findPublishedBillsWithStances,
 } from "../repositories/faction-repository";
 
 export type FactionVotesData = {
   factions: Faction[];
+  members: CouncilMember[];
   bills: BillVotes[];
 };
 
 /**
- * 会派一覧と、公開済み議案ごとの各会派の賛否を取得する
- * （会派ページの集計はすべてこのデータから行う）
+ * 会派・議員の一覧と、公開済み議案ごとの各会派・各議員の賛否を取得する
+ * （会派ページ・議員ページの集計はすべてこのデータから行う）
  */
 export async function getFactionVotes(
   difficultyLevel: DifficultyLevelEnum
@@ -24,8 +26,9 @@ export async function getFactionVotes(
 
 const _getCachedFactionVotes = unstable_cache(
   async (difficultyLevel: DifficultyLevelEnum): Promise<FactionVotesData> => {
-    const [factions, rows] = await Promise.all([
+    const [factions, members, rows] = await Promise.all([
       findAllFactions(),
+      findAllCouncilMembers(),
       findPublishedBillsWithStances(difficultyLevel),
     ]);
 
@@ -43,9 +46,14 @@ const _getCachedFactionVotes = unstable_cache(
         factionId: s.faction_id,
         type: s.type,
       })),
+      memberVotes: row.member_votes.map((v) => ({
+        memberId: v.member_id,
+        factionId: v.faction_id,
+        vote: v.vote,
+      })),
     }));
 
-    return { factions, bills };
+    return { factions, members, bills };
   },
   ["faction-votes"],
   {

@@ -1,5 +1,5 @@
 import { cn } from "@/lib/utils";
-import type { StanceGroup } from "../../shared/types";
+import type { MemberVoteType, StanceGroup } from "../../shared/types";
 
 const STANCE_MARKS: Record<
   StanceGroup,
@@ -46,6 +46,23 @@ export function StanceMark({ stance, compact = false }: StanceMarkProps) {
       )}
     >
       {compact ? mark.short : mark.label}
+    </span>
+  );
+}
+
+const MEMBER_VOTE_LABELS: Record<"absent" | "not_voting", string> = {
+  absent: "採決に加わらず",
+  not_voting: "議長など",
+};
+
+/** 議員1人の賛否の印。採決に加わらなかったときは灰色で理由を出す */
+export function MemberVoteMark({ vote }: { vote: MemberVoteType }) {
+  if (vote === "for" || vote === "against") {
+    return <StanceMark stance={vote} />;
+  }
+  return (
+    <span className="inline-flex shrink-0 items-center justify-center rounded-full bg-mirai-surface-muted px-3 py-1 text-xs font-bold text-mirai-text-secondary">
+      {MEMBER_VOTE_LABELS[vote]}
     </span>
   );
 }

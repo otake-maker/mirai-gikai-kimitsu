@@ -104,3 +104,35 @@ export function aggregateFactionStances(
     ];
   });
 }
+
+export type MemberVote = {
+  memberName: string;
+  factionName: string;
+  vote: VoteType | "absent" | "not_voting";
+};
+
+/**
+ * 議員一人ひとりの賛否に展開する（会派名簿の順）。
+ * 入力の検証は aggregateFactionStances で行うため、先にそちらを呼ぶこと。
+ */
+export function expandMemberVotes(
+  factions: FactionMembers[],
+  votes: MemberVotes,
+  nonVoting: string[] = []
+): MemberVote[] {
+  const absent = votes.absent ?? [];
+  const exceptions = new Set(votes.exceptions);
+
+  return factions.flatMap((faction) =>
+    faction.members.map((memberName): MemberVote => {
+      const vote = nonVoting.includes(memberName)
+        ? "not_voting"
+        : absent.includes(memberName)
+          ? "absent"
+          : exceptions.has(memberName)
+            ? opposite(votes.default)
+            : votes.default;
+      return { memberName, factionName: faction.name, vote };
+    })
+  );
+}

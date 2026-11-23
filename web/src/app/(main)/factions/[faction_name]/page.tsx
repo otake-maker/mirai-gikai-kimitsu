@@ -8,6 +8,7 @@ import {
   extractFactionVotes,
   summarizeFactionVotes,
 } from "@/features/factions/shared/utils/summarize-faction-votes";
+import { listFactionMembers } from "@/features/factions/shared/utils/summarize-member-votes";
 
 interface FactionRouteProps {
   params: Promise<{
@@ -48,7 +49,11 @@ export default async function FactionRoute({ params }: FactionRouteProps) {
 
   return (
     <Container className="py-10">
-      <FactionDetail faction={faction} summary={summary} />
+      <FactionDetail
+        faction={faction}
+        summary={summary}
+        members={listFactionMembers(data.bills, data.members, faction.id)}
+      />
     </Container>
   );
 }

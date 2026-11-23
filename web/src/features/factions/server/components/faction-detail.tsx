@@ -1,47 +1,34 @@
-import { ChevronLeft } from "lucide-react";
 import Link from "next/link";
 import { Badge } from "@/components/ui/badge";
 import { StanceMark } from "../../client/components/stance-mark";
 import type { Faction, FactionRecordSummary } from "../../shared/types";
-import { formatBillResult } from "../../shared/utils/format-labels";
-
-function StatTile({ label, value }: { label: string; value: number }) {
-  return (
-    <div className="flex flex-col items-center rounded-xl bg-mirai-surface-grouped px-2 py-3">
-      <span className="text-2xl font-bold text-mirai-text">{value}</span>
-      <span className="text-center text-xs text-mirai-text-secondary">
-        {label}
-      </span>
-    </div>
-  );
-}
-
-function SectionHeading({ children }: { children: React.ReactNode }) {
-  return (
-    <h2 className="mb-3 border-b border-mirai-border pb-2 text-lg font-bold text-mirai-text">
-      {children}
-    </h2>
-  );
-}
+import type { MemberListItem } from "../../shared/utils/summarize-member-votes";
+import {
+  BackLink,
+  BillVoteList,
+  SectionHeading,
+  StatTile,
+  TagTable,
+} from "./record-parts";
 
 interface FactionDetailProps {
   faction: Faction;
   summary: FactionRecordSummary;
+  /** この会派に所属したことのある議員 */
+  members: MemberListItem[];
 }
 
-export function FactionDetail({ faction, summary }: FactionDetailProps) {
+export function FactionDetail({
+  faction,
+  summary,
+  members,
+}: FactionDetailProps) {
   const { counts } = summary;
 
   return (
     <div className="flex flex-col gap-10">
       <div>
-        <Link
-          href="/factions"
-          className="mb-4 inline-flex items-center gap-1 text-sm text-mirai-text-secondary hover:underline"
-        >
-          <ChevronLeft className="h-4 w-4" />
-          会派ごとの賛否
-        </Link>
+        <BackLink href="/factions" label="会派ごとの賛否" />
         <div className="flex flex-wrap items-center gap-2">
           <h1 className="text-2xl font-bold text-mirai-text">
             {faction.display_name}
@@ -56,6 +43,30 @@ export function FactionDetail({ faction, summary }: FactionDetailProps) {
         )}
       </div>
 
+      {members.length > 0 && (
+        <section>
+          <SectionHeading>所属した議員</SectionHeading>
+          <ul className="flex flex-wrap gap-2">
+            {members.map(({ member, factionId, isCurrent }) => (
+              <li key={member.id}>
+                <Link
+                  href={`/members/${member.id}`}
+                  className="inline-flex items-center gap-1 rounded-full border border-mirai-border px-3 py-1 text-sm text-mirai-text hover:bg-mirai-surface-grouped"
+                >
+                  {member.name}
+                  {faction.is_active &&
+                    !(isCurrent && factionId === faction.id) && (
+                      <span className="text-xs text-mirai-text-secondary">
+                        （以前）
+                      </span>
+                    )}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </section>
+      )}
+
       <section>
         <SectionHeading>賛否の記録</SectionHeading>
         <div className="grid grid-cols-2 gap-2 sm:grid-cols-4">
@@ -69,67 +80,24 @@ export function FactionDetail({ faction, summary }: FactionDetailProps) {
       {summary.byTag.length > 0 && (
         <section>
           <SectionHeading>テーマ別の賛否</SectionHeading>
-          <div className="overflow-x-auto rounded-xl border border-mirai-border">
-            <table className="w-full border-collapse text-sm">
-              <thead className="bg-mirai-surface-grouped">
-                <tr>
-                  <th className="p-2 text-left font-bold">テーマ</th>
-                  <th className="p-2 text-right font-bold">議案</th>
-                  <th className="p-2 text-right font-bold">賛成</th>
-                  <th className="p-2 text-right font-bold">反対</th>
-                  <th className="p-2 text-right font-bold">分かれた</th>
-                </tr>
-              </thead>
-              <tbody>
-                {summary.byTag.map((row) => (
-                  <tr key={row.tag} className="border-t border-mirai-border">
-                    <td className="p-2">{row.tag}</td>
-                    <td className="p-2 text-right">{row.total}</td>
-                    <td className="p-2 text-right">{row.for}</td>
-                    <td className="p-2 text-right">{row.against}</td>
-                    <td className="p-2 text-right">{row.split}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-          <p className="mt-2 text-xs text-mirai-text-secondary">
-            1つの議案に複数のテーマがつくことがあります。テーマのない議案は含みません。
-          </p>
+          <TagTable
+            rows={summary.byTag}
+            columns={[
+              ["賛成", "for"],
+              ["反対", "against"],
+              ["分かれた", "split"],
+            ]}
+          />
         </section>
       )}
 
       <section>
         <SectionHeading>全会一致でなかった議案での賛否</SectionHeading>
-        {summary.contested.length === 0 ? (
-          <p className="text-sm text-mirai-text-secondary">
-            全会一致でなかった議案はありません。
-          </p>
-        ) : (
-          <ul className="flex flex-col divide-y divide-mirai-border">
-            {summary.contested.map((vote) => (
-              <li key={vote.billId} className="flex items-start gap-3 py-3">
-                <StanceMark stance={vote.stance} />
-                <div className="flex flex-col gap-0.5">
-                  <Link
-                    href={`/bills/${vote.billId}`}
-                    className="font-medium text-mirai-text hover:underline"
-                  >
-                    {vote.title}
-                  </Link>
-                  <span className="text-xs text-mirai-text-secondary">
-                    {vote.sessionName} {vote.billNumber}・議会の結果：
-                    {formatBillResult(
-                      vote.billNumber,
-                      vote.status,
-                      vote.statusNote
-                    )}
-                  </span>
-                </div>
-              </li>
-            ))}
-          </ul>
-        )}
+        <BillVoteList
+          bills={summary.contested}
+          mark={(vote) => <StanceMark stance={vote.stance} />}
+          emptyMessage="全会一致でなかった議案はありません。"
+        />
       </section>
     </div>
   );

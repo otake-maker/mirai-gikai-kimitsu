@@ -11,7 +11,14 @@ export type Faction = {
   is_active: boolean;
 };
 
-/** 公開済み議案1件と、その議案への各会派の賛否 */
+export type CouncilMember = {
+  id: string;
+  name: string;
+};
+
+export type MemberVoteType = "for" | "against" | "absent" | "not_voting";
+
+/** 公開済み議案1件と、その議案への各会派・各議員の賛否 */
 export type BillVotes = {
   billId: string;
   billNumber: string;
@@ -23,13 +30,14 @@ export type BillVotes = {
   sessionStartDate: string;
   tags: string[];
   stances: { factionId: string; type: StanceTypeEnum }[];
+  memberVotes: { memberId: string; factionId: string; vote: MemberVoteType }[];
 };
 
 /** 賛否を「賛成・反対・会派内で分かれた・その他」の4つにまとめたもの */
 export type StanceGroup = "for" | "against" | "split" | "other";
 
 /** ある会派から見た、議案1件への賛否 */
-export type FactionVote = Omit<BillVotes, "stances"> & {
+export type FactionVote = Omit<BillVotes, "stances" | "memberVotes"> & {
   stance: StanceGroup;
   /** すべての会派が同じ賛否だったか */
   isUnanimous: boolean;
