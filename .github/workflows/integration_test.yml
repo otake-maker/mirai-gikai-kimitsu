@@ -30,10 +30,11 @@ jobs:
       - name: Setup Supabase CLI
         uses: supabase/setup-cli@b60b5899c73b63a2d2d651b1e90db8d4c9392f51 # v1.6.0
         with:
-          version: latest
+          # latest だと CLI のメジャー更新で設定ファイルの互換が切れ、CI が突然落ちるため固定する
+          version: 3.1.0
 
       - name: Start Supabase
-        run: supabase start -x studio,imgproxy,logflare,vector,realtime,edge-runtime,supavisor,inbucket
+        run: supabase start -x studio,imgproxy,logflare,vector,realtime,edge-runtime,supavisor,mailpit
 
       - name: Run Integration Tests with Coverage
         run: pnpm test:integration:coverage
